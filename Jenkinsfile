@@ -9,6 +9,6 @@ node {
         sh 'python -V'
     }
     stage("test"){
-        sh 'pytest test.py'
+        sh '/usr/local/bin/pytest test.py'
     }
 }
