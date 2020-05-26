@@ -8,8 +8,4 @@ node {
         sh 'python3 -V'
         sh 'python -V'
     }
-
-
-
-
-
+}
