@@ -5,7 +5,7 @@ node {
         url: 'https://github.com/alex-radchenko/test25-05.git'
     }
     stage("test"){
-        sh 'pytest test.py'
+        sh 'python3 -V'
     }
 }
 
