@@ -6,7 +6,6 @@ node {
     }
     stage("install"){
         sh 'pip3 install pipenv'
-        sh 'pipenv install'
     }
 
 }
