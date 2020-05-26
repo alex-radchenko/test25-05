@@ -9,7 +9,7 @@ node {
         sh 'pip3 install pytest'
     }
     stage("test"){
-        sh 'pytest tests.py'
+        sh 'pytest test.py'
     }
 }
 
