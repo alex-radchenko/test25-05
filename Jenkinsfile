@@ -9,7 +9,6 @@ node {
         sh 'pip3 install pytest'
     }
     stage("Test"){
-        sh 'cd tests'
         sh 'pytest test.py -sv --alluredir=allure_result'
     }
 
