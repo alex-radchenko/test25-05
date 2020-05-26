@@ -8,7 +8,11 @@ node {
         sh 'pip3 install pipenv'
     }
     stage("Test"){
-        sh 'pipenv run tests -sv'
+        sh 'cd tests'
+        sh 'pipenv run pytest test.py -sv --alluredir=allure_result'
     }
 
 }
+
+
+
