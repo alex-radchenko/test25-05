@@ -5,7 +5,8 @@ node {
         url: 'https://github.com/alex-radchenko/test25-05.git'
     }
     stage("test"){
-        sh 'pip3 install pytest'
+        sh 'apt install python-pip'
+        sh 'pip install pytest'
     }
     stage("test"){
         sh 'pytest test.py -sv --alluredir=allure_result'
