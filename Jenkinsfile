@@ -5,11 +5,10 @@ node {
         url: 'https://github.com/alex-radchenko/test25-05.git'
     }
     stage("install"){
-        bash 'pip3 install pipenv'
-        bash 'pip3 install pytest'
+        sh 'pipenv install'
     }
     stage("test"){
-        bash 'pytest test.py'
+        sh 'pipenv run pytest test.py -sv --alluredir=allure_result'
     }
 }
 
