@@ -8,4 +8,15 @@ node {
     stage("test"){
         sh '/usr/local/bin/pipenv run /usr/local/bin/pytest test.py -sv --alluredir=allure_result'
     }
+    stage("report"){
+        script {
+                allure([
+                    includeProperties: false,
+                    jdk: '',
+                    properties: [],
+                    reportBuildPolicy: 'ALWAYS',
+                    result: [[path: 'allure_result']]
+                ])
+        }
+    }
 }
