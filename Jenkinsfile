@@ -6,9 +6,10 @@ node {
     }
     stage("Install deps"){
         sh 'pipenv install'
+        sh 'pipenv --version'
     }
     stage("Test"){
-        sh 'pipenv run pytest test.py -sv --alluredir=allure_result'
+        sh 'pytest test.py -sv --alluredir=allure_result'
     }
 
 }
