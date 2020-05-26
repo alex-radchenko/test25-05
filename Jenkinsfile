@@ -8,7 +8,7 @@ node {
         sh 'pip3 install pipenv'
     }
     stage("Test"){
-        sh 'python3 tests/test.py'
+        sh 'pipenv run tests -sv'
     }
 
 }
