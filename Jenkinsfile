@@ -4,12 +4,11 @@ node {
         git branch: 'master',
         url: 'https://github.com/alex-radchenko/test25-05.git'
     }
-    stage("test"){
-        sh 'apt install python-pip'
-        sh 'pip install pytest'
+    stage("install"){
+        sh 'pipenv install'
     }
     stage("test"){
-        sh 'pytest test.py -sv --alluredir=allure_result'
+        sh 'pipenv run pytest test.py -sv --alluredir=allure_result'
     }
 }
 
