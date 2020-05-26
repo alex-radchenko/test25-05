@@ -4,8 +4,8 @@ node {
         git branch: 'master',
         url: 'https://github.com/alex-radchenko/test25-05.git'
     }
-    stage("VV"){
-        sh '/usr/local/bin/pipenv install'
-    }
 
+    stage("test"){
+        sh '/usr/local/bin/pipenv run /usr/local/bin/pytest test.py -sv --alluredir=allure_result'
+    }
 }
