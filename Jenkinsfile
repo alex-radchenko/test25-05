@@ -9,7 +9,7 @@ node {
     }
     stage("Test"){
         sh 'cd tests'
-        sh 'pipenv run pytest test.py -sv --alluredir=allure_result'
+        sh 'pytest test.py -sv --alluredir=allure_result'
     }
 
 }
