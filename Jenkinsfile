@@ -6,6 +6,7 @@ node {
     }
     stage("Install deps"){
         sh 'pip3 install pipenv'
+        sh 'pip3 install pytest'
     }
     stage("Test"){
         sh 'cd tests'
