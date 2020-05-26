@@ -6,7 +6,9 @@ node {
     }
     stage("install"){
         sh 'pip3 install pipenv'
-        sh 'pipenv install'
+    }
+    stage("test"){
+        sh 'pytest test.py'
     }
 }
 
