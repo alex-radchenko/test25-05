@@ -4,9 +4,7 @@ node {
         git branch: 'master',
         url: 'https://github.com/alex-radchenko/test25-05.git'
     }
-    stage("Install deps"){
-        sh 'pipenv --version'
-    }
+
     stage("Test"){
         sh 'pytest test.py -sv --alluredir=allure_result'
     }
