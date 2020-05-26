@@ -5,11 +5,11 @@ node {
         url: 'https://github.com/alex-radchenko/test25-05.git'
     }
     stage("install"){
-        sh 'pip3 install pipenv'
-        sh 'pip3 install pytest'
+        bash 'pip3 install pipenv'
+        bash 'pip3 install pytest'
     }
     stage("test"){
-        sh 'pytest test.py'
+        bash 'pytest test.py'
     }
 }
 
