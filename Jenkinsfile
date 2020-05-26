@@ -6,7 +6,7 @@ node {
     }
 
     stage("Test"){
-        sh 'pytest test.py -sv --alluredir=allure_result'
+        sh 'python test.py'
     }
 
 }
