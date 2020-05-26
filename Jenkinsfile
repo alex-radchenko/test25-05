@@ -4,8 +4,11 @@ node {
         git branch: 'master',
         url: 'https://github.com/alex-radchenko/test25-05.git'
     }
-    stage("test"){
+    stage("VV"){
         sh 'python3 -V'
         sh 'python -V'
+    }
+    stage("test"){
+        sh 'pytest test.py'
     }
 }
