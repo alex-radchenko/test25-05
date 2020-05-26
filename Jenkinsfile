@@ -6,7 +6,7 @@ node {
     }
 
     stage("Test"){
-        sh 'python test.py'
+        sh 'pytest test.py'
     }
 
 }
