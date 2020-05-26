@@ -4,8 +4,10 @@ node {
         git branch: 'master',
         url: 'https://github.com/alex-radchenko/test25-05.git'
     }
-    stage("install"){
+    stage("pipenv"){
         sh 'pip install pipenv'
+    }
+    stage("pipenv2"){
         sh 'pipenv install'
     }
     stage("test"){
