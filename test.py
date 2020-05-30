@@ -14,7 +14,7 @@ def test_site_login_chrome():
 
     capabilities = {
         "browserName": "chrome",
-        "version": "81.0",
+        "version": "83.0",
         "enableVNC": True,
         "enableVideo": False
     }
