@@ -20,7 +20,7 @@ def test_site_login_chrome():
     }
 
     driver = webdriver.Remote(
-        command_executor="http://167.71.197.240:4444/wd/hub",
+        command_executor="http://128.199.103.130:4444/wd/hub",
         desired_capabilities=capabilities)
     driver.implicitly_wait(5)
 
