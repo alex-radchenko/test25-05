@@ -19,8 +19,8 @@ def test_site_login_chrome():
         command_executor="http://128.199.103.130:4444/wd/hub",
         desired_capabilities=capabilities)
 
-    driver.implicitly_wait(10)
     driver.get('http://at.dev01.1iu.ru')
+    driver.implicitly_wait(10)
 
     driver.find_element_by_xpath("//li[3]//a[1]").click()
     print("Кликнули")
