@@ -23,7 +23,7 @@ def test_site_login_chrome():
         desired_capabilities=capabilities)
 
     driver.get('http://at.dev01.1iu.ru')
-    driver.implicitly_wait(10)
+    #driver.implicitly_wait(10)
 
     driver.find_element_by_xpath("//li[3]//a[1]").click()
     print("Кликнули")
@@ -32,6 +32,6 @@ def test_site_login_chrome():
     driver.find_element_by_xpath("//button[@class='btn modal__btn']").click()
     #driver.implicitly_wait(10)
     driver.get('https://at.dev01.1iu.ru/account/profile')
-    #driver.implicitly_wait(10)
+    driver.implicitly_wait(10)
     assert driver.find_element_by_xpath("//input[@id='email']").get_attribute("value") == login_at
     driver.quit()
