@@ -5,9 +5,6 @@ import allure
 def test_site_work():
     assert True
 
-def test_site_work2():
-    assert True
-
 def test_site_login_chrome():
     login_at = "author@1iu.ru"
     pass_at = "dev"
