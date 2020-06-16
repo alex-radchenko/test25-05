@@ -20,7 +20,7 @@ def test_site_login_chrome():
         desired_capabilities=capabilities)
 
     #driver.implicitly_wait(10)
-    driver.implicitly_wait(10).get('http://at.dev01.1iu.ru')
+    driver.get('http://at.dev01.1iu.ru').implicitly_wait(10)
 
     driver.find_element_by_xpath("//li[3]//a[1]").click()
     print("Кликнули")
