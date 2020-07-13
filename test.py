@@ -4,7 +4,7 @@ import time
 #import lorem
 from selenium.webdriver.common.keys import Keys
 
-def test_site_login_chrome1():
+def test_site_login_chrome():
     capabilities = {
         "browserName": "chrome",
         "version": "83.0",
@@ -29,30 +29,9 @@ def test_site_login_chrome1():
     driver.implicitly_wait(10)
 
     driver.find_element_by_link_text("Создать курс в папке").click()
-    driver.find_element_by_xpath("//input[@id='title']").send_keys("Название курса")
-    driver.find_element_by_xpath("//div[@class='diary-settings__descr__wrap']//span[2]").click()
-    driver.find_element_by_xpath("//textarea[@class='js-editor js-description-field js-editor-newformats']").send_keys("Описание курса")
-    driver.find_element_by_link_text("Создать курс").click()
-    time.sleep(1)
-    driver.find_element_by_link_text("Продолжить").click()
-    assert driver.find_element_by_xpath("//div[@class='block__bigtitle js-bigtitle']").text == "Название курса"
-    driver.find_element_by_xpath("//button[contains(@class,'button js-popup-trigger')]").click()
-    time.sleep(1)
-    driver.find_element_by_xpath("//div[@id='pu_lestype']//a[1]").click()
-
-    driver.find_element_by_xpath("//input[@id='title']").send_keys("Урок №1")
-    driver.find_element_by_xpath("//div[@class='diary-settings__descr__wrap']//span[2]").click()
-
-    driver.find_element_by_xpath("//textarea[contains(@class,'js-editor js-description-field')]").send_keys("Описание урока")
-
-    driver.find_element_by_tag_name('body').send_keys(Keys.END)
-    driver.find_element_by_xpath("//span[@class='b-btn button fl-r js-submit']").click()
-    driver.find_element_by_xpath("//a[@class='b-btn animate fl-l js-popup-close']").click()
-    time.sleep(3)
-
     driver.quit()
 
-def test_site_login_chrome2():
+def test_site_login_chrome():
     capabilities = {
         "browserName": "chrome",
         "version": "83.0",
