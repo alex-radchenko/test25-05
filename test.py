@@ -1,7 +1,5 @@
 from selenium import webdriver
 import time
-import allure
-import xdist
 
 #import lorem
 from selenium.webdriver.common.keys import Keys
