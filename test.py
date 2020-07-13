@@ -31,7 +31,7 @@ def test_site_login_chrome():
     driver.find_element_by_link_text("Создать курс в папке").click()
     driver.quit()
 
-def test_site_login_chrome():
+def test_site_create_cours():
     capabilities = {
         "browserName": "chrome",
         "version": "83.0",
