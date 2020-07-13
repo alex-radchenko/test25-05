@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "1d7801fa3c0d8b89356c9aae7245c8db931a33918d30465e75397c5109757938"
+            "sha256": "ac3ed291dfbb39cbf68b9c134bb1a44d1576a602085b7338f7ec2d34c3d0e5f0"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -31,12 +31,26 @@
             ],
             "version": "==2.8.16"
         },
+        "apipkg": {
+            "hashes": [
+                "sha256:37228cda29411948b422fae072f57e31d3396d2ee1c9783775980ee9c9990af6",
+                "sha256:58587dd4dc3daefad0487f6d9ae32b4542b185e1c36db6993290e7c41ca2b47c"
+            ],
+            "version": "==1.5"
+        },
         "attrs": {
             "hashes": [
                 "sha256:08a96c641c3a74e44eb59afb61a24f2cb9f4d7188748e76ba4bb5edfa3cb7d1c",
                 "sha256:f7b7ce16570fe9965acd6d30101a28f62fb4a7f9e926b3bbc9b61f8b04247e72"
             ],
             "version": "==19.3.0"
+        },
+        "execnet": {
+            "hashes": [
+                "sha256:cacb9df31c9680ec5f95553976c4da484d407e85e41c83cb812aa014f0eddc50",
+                "sha256:d4efd397930c46415f62f8a31388d6be4f27a91d7550eb79bc64a756e0056547"
+            ],
+            "version": "==1.7.1"
         },
         "lorem": {
             "hashes": [
@@ -88,6 +102,21 @@
             ],
             "index": "pypi",
             "version": "==5.4.3"
+        },
+        "pytest-forked": {
+            "hashes": [
+                "sha256:42a438336731465c5bd76ab38e1645647ac55914a08b507efbabe8783a08aa6c",
+                "sha256:65f96334863d9cbe53d21f73e8febc4dd61b8d1fdcac7b487d9af07a5d02a938"
+            ],
+            "version": "==1.2.0"
+        },
+        "pytest-xdist": {
+            "hashes": [
+                "sha256:833b902b16473162cc0572d5bd7b63f8b843df63a4ada9c8af1270d31db17607",
+                "sha256:9149b4010240643a5e206fd0ece6f0a1cd5955dae014cf04610d359e22e22453"
+            ],
+            "index": "pypi",
+            "version": "==1.33.0"
         },
         "selenium": {
             "hashes": [
