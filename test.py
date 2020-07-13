@@ -1,9 +1,9 @@
 from selenium import webdriver
 import time
 import allure
+
 #import lorem
 from selenium.webdriver.common.keys import Keys
-
 
 def test_site_login_chrome():
     capabilities = {
