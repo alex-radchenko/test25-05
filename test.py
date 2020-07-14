@@ -78,6 +78,9 @@ def test_site_create_lesson_theory():
     driver.get("https://antitreningi.ru/account/auth?&token=6auklaju4ccqs4vuj4a48vfvoe")
 
     #Create_lesson_theory
+
+    driver.find_element_by_link_text("Название курса").click()
+    driver.find_element_by_link_text("Уроки").click()
     driver.find_element_by_xpath("//div[@id='pu_lestype']//a[1]").click()
     driver.find_element_by_xpath("//input[@id='title']").send_keys("Урок №1")
     driver.find_element_by_xpath("//div[@class='diary-settings__descr__wrap']//span[2]").click()
