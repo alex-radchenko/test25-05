@@ -85,6 +85,7 @@ def test_site_create_lesson_theory():
 
     driver.find_element_by_link_text("Название курса").click()
     driver.find_element_by_link_text("Уроки").click()
+    driver.find_element_by_xpath("//button[contains(@class,'button js-popup-trigger')]").click()
     driver.find_element_by_xpath("//div[@id='pu_lestype']//a[1]").click()
     driver.find_element_by_xpath("//input[@id='title']").send_keys("Урок №1")
     driver.find_element_by_xpath("//div[@class='diary-settings__descr__wrap']//span[2]").click()
@@ -94,7 +95,21 @@ def test_site_create_lesson_theory():
     driver.find_element_by_xpath("//a[@class='b-btn animate fl-l js-popup-close']").click()
     time.sleep(3)
 
+@pytest.mark.order4
+def test_site_create_lesson_task():
+    capabilities = {
+        "browserName": "chrome",
+        "version": "83.0",
+        "enableVNC": True,
+        "enableVideo": False
+    }
+    driver = webdriver.Remote(
+        command_executor="http://128.199.103.130:4444/wd/hub",
+        desired_capabilities=capabilities)
+    driver.maximize_window()
 
+    driver.implicitly_wait(10)
+    driver.get("https://antitreningi.ru/account/auth?&token=6auklaju4ccqs4vuj4a48vfvoe")
     #Create_lesson_task
     driver.find_element_by_link_text("Название курса").click()
     driver.find_element_by_link_text("Уроки").click()
@@ -123,7 +138,7 @@ def test_site_create_lesson_theory():
     time.sleep(15)
     driver.quit()
 
-@pytest.mark.order3
+@pytest.mark.order5
 def test_site_delete_cours():
     capabilities = {
         "browserName": "chrome",
@@ -146,7 +161,7 @@ def test_site_delete_cours():
         time.sleep(3)
     driver.quit()
 
-@pytest.mark.order5
+@pytest.mark.order6
 def test_site_delete_cours_from_basket():
     capabilities = {
         "browserName": "chrome",
