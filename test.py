@@ -34,6 +34,7 @@ def test_site_login_chrome():
 
     driver.find_element_by_link_text("Создать курс в папке").click()
     driver.quit()
+    time.sleep(15)
 
 @pytest.mark.order2
 def test_site_create_cours():
@@ -63,7 +64,9 @@ def test_site_create_cours():
     driver.find_element_by_link_text("Продолжить").click()
     assert driver.find_element_by_xpath("//div[@class='block__bigtitle js-bigtitle']").text == "Название курса"
     driver.find_element_by_xpath("//button[contains(@class,'button js-popup-trigger')]").click()
-    time.sleep(1)
+
+    driver.quit()
+    time.sleep(15)
 
 @pytest.mark.order3
 def test_site_create_lesson_theory():
@@ -93,7 +96,8 @@ def test_site_create_lesson_theory():
     driver.find_element_by_tag_name('body').send_keys(Keys.END)
     driver.find_element_by_xpath("//span[@class='b-btn button fl-r js-submit']").click()
     driver.find_element_by_xpath("//a[@class='b-btn animate fl-l js-popup-close']").click()
-    time.sleep(3)
+    driver.quit()
+    time.sleep(15)
 
 @pytest.mark.order4
 def test_site_create_lesson_task():
@@ -160,6 +164,7 @@ def test_site_delete_cours():
         driver.find_element_by_xpath("//div[contains(@class,'MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-center MuiGrid-justify-xs-space-between')]//div[1]//div[1]//div[1]//button[1]//span[1]").click()
         time.sleep(3)
     driver.quit()
+    time.sleep(15)
 
 @pytest.mark.order6
 def test_site_delete_cours_from_basket():
@@ -183,3 +188,4 @@ def test_site_delete_cours_from_basket():
         driver.find_element_by_xpath("//div[contains(@class,'MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-center MuiGrid-justify-xs-space-between')]//div[1]//div[1]//div[1]//button[1]//span[1]").click()
 
     driver.quit()
+    time.sleep(15)
