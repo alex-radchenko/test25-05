@@ -1,12 +1,13 @@
 from selenium import webdriver
 import time
+import pytest
 import json
 import re
 
 #import lorem
 from selenium.webdriver.common.keys import Keys
 
-@pytest.mark.run(order=1)
+@pytest.mark.order1
 def test_site_login_chrome():
     capabilities = {
         "browserName": "chrome",
@@ -34,7 +35,7 @@ def test_site_login_chrome():
     driver.find_element_by_link_text("Создать курс в папке").click()
     driver.quit()
 
-@pytest.mark.run(order=2)
+@pytest.mark.order2
 def test_site_create_cours():
 
     capabilities = {
@@ -64,7 +65,7 @@ def test_site_create_cours():
     driver.find_element_by_xpath("//button[contains(@class,'button js-popup-trigger')]").click()
     time.sleep(1)
 
-@pytest.mark.run(order=3)
+@pytest.mark.order3
 def test_site_create_lesson_theory():
     capabilities = {
         "browserName": "chrome",
@@ -122,7 +123,7 @@ def test_site_create_lesson_theory():
     time.sleep(15)
     driver.quit()
 
-@pytest.mark.run(order=4)
+@pytest.mark.order3
 def test_site_delete_cours():
     capabilities = {
         "browserName": "chrome",
@@ -145,7 +146,7 @@ def test_site_delete_cours():
         time.sleep(3)
     driver.quit()
 
-@pytest.mark.run(order=5)
+@pytest.mark.order5
 def test_site_delete_cours_from_basket():
     capabilities = {
         "browserName": "chrome",

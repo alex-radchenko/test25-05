@@ -10,8 +10,6 @@ pytest = "*"
 selenium = "*"
 allure-pytest = "*"
 lorem = "*"
-pytest-xdist = "*"
-pytest-marks = "*"
 
 [requires]
 python_version = "3.6"
