@@ -238,50 +238,50 @@ def test_site_create_lesson_task_type_4_upload_file():
     driver.quit()
 
 
-#@pytest.mark.order6
-#def test_site_delete_cours():
-#    capabilities = {
-#        "browserName": "chrome",
-#        "version": "83.0",
-#        "enableVNC": True,
-#        "enableVideo": False
-#    }
-#    driver = webdriver.Remote(
-#        command_executor="http://128.199.103.130:4444/wd/hub",
-#        desired_capabilities=capabilities)
-#    driver.maximize_window()
-#
-#    driver.implicitly_wait(10)
-#    driver.get("https://antitreningi.ru/account/auth?&token=6auklaju4ccqs4vuj4a48vfvoe")
-#
-#    for sel_del in driver.find_elements_by_xpath("//body//div[@id='courseslist']//div//div[3]//div[1]//div[3]//div[1]//div[2]//div[1]//div[1]//img[1]"):
-#        driver.implicitly_wait(10)
-#        sel_del.click()
-#        driver.find_element_by_xpath("//div[contains(@class,'MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-center MuiGrid-justify-xs-space-between')]//div[1]//div[1]//div[1]//button[1]//span[1]").click()
-#        time.sleep(3)
-#    driver.quit()
-#    time.sleep(15)
-#
-#@pytest.mark.order7
-#def test_site_delete_cours_from_basket():
-#    capabilities = {
-#        "browserName": "chrome",
-#        "version": "83.0",
-#        "enableVNC": True,
-#        "enableVideo": False
-#    }
-#    driver = webdriver.Remote(
-#        command_executor="http://128.199.103.130:4444/wd/hub",
-#        desired_capabilities=capabilities)
-#    driver.maximize_window()
-#
-#    driver.implicitly_wait(10)
-#    driver.get("https://antitreningi.ru/account/auth?&token=6auklaju4ccqs4vuj4a48vfvoe")
-#
-#    for sel_del in driver.find_elements_by_xpath("//body//div[@id='courseslist']//div//div[3]//div[1]//div[4]//div[1]//div[2]//div[1]//div[1]//img[1]"):
-#        driver.implicitly_wait(10)
-#        sel_del.click()
-#        driver.find_element_by_xpath("//div[contains(@class,'MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-center MuiGrid-justify-xs-space-between')]//div[1]//div[1]//div[1]//button[1]//span[1]").click()
-#
-#    driver.quit()
-#    time.sleep(15)
+@pytest.mark.order8
+def test_site_delete_cours():
+    capabilities = {
+        "browserName": "chrome",
+        "version": "83.0",
+        "enableVNC": True,
+        "enableVideo": False
+    }
+    driver = webdriver.Remote(
+        command_executor="http://128.199.103.130:4444/wd/hub",
+        desired_capabilities=capabilities)
+    driver.maximize_window()
+
+    driver.implicitly_wait(10)
+    driver.get("https://antitreningi.ru/account/auth?&token=6auklaju4ccqs4vuj4a48vfvoe")
+
+    for sel_del in driver.find_elements_by_xpath("//body//div[@id='courseslist']//div//div[3]//div[1]//div[3]//div[1]//div[2]//div[1]//div[1]//img[1]"):
+        driver.implicitly_wait(10)
+        sel_del.click()
+        driver.find_element_by_xpath("//div[contains(@class,'MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-center MuiGrid-justify-xs-space-between')]//div[1]//div[1]//div[1]//button[1]//span[1]").click()
+        time.sleep(3)
+    driver.quit()
+    time.sleep(15)
+
+@pytest.mark.order9
+def test_site_delete_cours_from_basket():
+    capabilities = {
+        "browserName": "chrome",
+        "version": "83.0",
+        "enableVNC": True,
+        "enableVideo": False
+    }
+    driver = webdriver.Remote(
+        command_executor="http://128.199.103.130:4444/wd/hub",
+        desired_capabilities=capabilities)
+    driver.maximize_window()
+
+    driver.implicitly_wait(10)
+    driver.get("https://antitreningi.ru/account/auth?&token=6auklaju4ccqs4vuj4a48vfvoe")
+
+    for sel_del in driver.find_elements_by_xpath("//body//div[@id='courseslist']//div//div[3]//div[1]//div[4]//div[1]//div[2]//div[1]//div[1]//img[1]"):
+        driver.implicitly_wait(10)
+        sel_del.click()
+        driver.find_element_by_xpath("//div[contains(@class,'MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-center MuiGrid-justify-xs-space-between')]//div[1]//div[1]//div[1]//button[1]//span[1]").click()
+
+    driver.quit()
+    time.sleep(15)
