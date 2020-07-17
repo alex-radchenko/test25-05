@@ -12,7 +12,7 @@ from selenium.webdriver.common.keys import Keys
 @pytest.mark.order1
 def test_site_login_chrome():
     driver = remote_driver.dr
-    driver.maximize_window()
+    remote_driver.dr.maximize_window()
     login_at = "radwexe@mail.ru"
     pass_at = "111"
 
@@ -31,7 +31,7 @@ def test_site_login_chrome():
 @pytest.mark.order2
 def test_site_create_cours():
     driver = remote_driver.dr
-    #driver.maximize_window()
+    remote_driver.dr.maximize_window()
     login_at = "radwexe@mail.ru"
     pass_at = "111"
 
