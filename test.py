@@ -11,7 +11,7 @@ from selenium.webdriver.common.keys import Keys
 
 @pytest.mark.order1
 def test_site_login_chrome():
-    capabilities = remote_driver.br
+    capabilities = browsers.chrome_84
     driver = webdriver.Remote(
         command_executor=remote_driver.ip_selenoid,
         desired_capabilities=capabilities).maximize_window()
@@ -33,7 +33,7 @@ def test_site_login_chrome():
 
 @pytest.mark.order2
 def test_site_create_cours():
-    capabilities = remote_driver.br
+    capabilities = browsers.chrome_84
     driver = webdriver.Remote(
         command_executor=remote_driver.ip_selenoid,
         desired_capabilities=capabilities).maximize_window()
@@ -59,7 +59,7 @@ def test_site_create_cours():
 
 @pytest.mark.order3
 def test_site_create_lesson_theory():
-    capabilities = remote_driver.br
+    capabilities = browsers.chrome_84
     driver = webdriver.Remote(
         command_executor=remote_driver.ip_selenoid,
         desired_capabilities=capabilities).maximize_window()
@@ -85,7 +85,7 @@ def test_site_create_lesson_theory():
 
 @pytest.mark.order4
 def test_site_create_lesson_task_type_1_text_report():
-    capabilities = remote_driver.br
+    capabilities = browsers.chrome_84
     driver = webdriver.Remote(
         command_executor=remote_driver.ip_selenoid,
         desired_capabilities=capabilities).maximize_window()
@@ -123,7 +123,7 @@ def test_site_create_lesson_task_type_1_text_report():
 
 @pytest.mark.order5
 def test_site_create_lesson_task_type_2_filling_the_gaps():
-    capabilities = remote_driver.br
+    capabilities = browsers.chrome_84
     driver = webdriver.Remote(
         command_executor=remote_driver.ip_selenoid,
         desired_capabilities=capabilities).maximize_window()
@@ -161,7 +161,7 @@ def test_site_create_lesson_task_type_2_filling_the_gaps():
 
 @pytest.mark.order6
 def test_site_create_lesson_task_type_3_upload_file():
-    capabilities = remote_driver.br
+    capabilities = browsers.chrome_84
     driver = webdriver.Remote(
         command_executor=remote_driver.ip_selenoid,
         desired_capabilities=capabilities).maximize_window()
@@ -199,7 +199,7 @@ def test_site_create_lesson_task_type_3_upload_file():
 
 @pytest.mark.order7
 def test_site_create_lesson_task_type_4_upload_file():
-    capabilities = remote_driver.br
+    capabilities = browsers.chrome_84
     driver = webdriver.Remote(
         command_executor=remote_driver.ip_selenoid,
         desired_capabilities=capabilities).maximize_window()
@@ -236,7 +236,7 @@ def test_site_create_lesson_task_type_4_upload_file():
 
 @pytest.mark.order8
 def test_site_delete_cours():
-    capabilities = remote_driver.br
+    capabilities = browsers.chrome_84
     driver = webdriver.Remote(
         command_executor=remote_driver.ip_selenoid,
         desired_capabilities=capabilities).maximize_window()
@@ -255,7 +255,7 @@ def test_site_delete_cours():
 
 @pytest.mark.order9
 def test_site_delete_cours_from_basket():
-    capabilities = remote_driver.br
+    capabilities = browsers.chrome_84
     driver = webdriver.Remote(
         command_executor=remote_driver.ip_selenoid,
         desired_capabilities=capabilities).maximize_window()
