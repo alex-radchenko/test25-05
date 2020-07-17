@@ -39,7 +39,8 @@ def test_site_create_cours():
     capabilities = browsers.chrome_84
     driver = webdriver.Remote(
         command_executor=remote_driver.ip_selenoid,
-        desired_capabilities=capabilities).maximize_window()
+        desired_capabilities=capabilities)
+    driver.maximize_window()
 
     driver.get("https://antitreningi.ru/account/auth?&token=6auklaju4ccqs4vuj4a48vfvoe")
     driver.implicitly_wait(10)
