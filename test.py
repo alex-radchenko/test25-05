@@ -1,4 +1,5 @@
 import remote_driver
+import browsers
 from selenium import webdriver
 import time
 import pytest
@@ -22,7 +23,6 @@ def test_site_login_chrome():
     driver.find_element_by_name("email").send_keys(login_at)
     driver.find_element_by_name("password").send_keys(pass_at)
     driver.find_element_by_xpath("//button[@class='btn modal__btn']").click()
-    driver.implicitly_wait(10)
 
     driver.find_element_by_link_text("Создать курс в папке").click()
     driver.quit()
@@ -30,15 +30,11 @@ def test_site_login_chrome():
 
 @pytest.mark.order2
 def test_site_create_cours():
-    #driver = remote_driver.dr
-    #driver.maximize_window()
     driver = remote_driver.dr
     driver.maximize_window()
-    login_at = "radwexe@mail.ru"
-    pass_at = "111"
+
     driver.implicitly_wait(10)
-    driver.get('https://antitreningi.ru')
-    #driver.get("https://antitreningi.ru/account/auth?&token=6auklaju4ccqs4vuj4a48vfvoe")
+    driver.get("https://antitreningi.ru/account/auth?&token=6auklaju4ccqs4vuj4a48vfvoe")
     #Create_cours
     driver.find_element_by_link_text("Создать курс в папке").click()
     driver.find_element_by_xpath("//input[@id='title']").send_keys("Название курса")
@@ -79,7 +75,6 @@ def test_site_create_lesson_theory():
 def test_site_create_lesson_task_type_1_text_report():
     driver = remote_driver.dr
     driver.maximize_window()
-
 
     driver.implicitly_wait(10)
     driver.get("https://antitreningi.ru/account/auth?&token=6auklaju4ccqs4vuj4a48vfvoe")
