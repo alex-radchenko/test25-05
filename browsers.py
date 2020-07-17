@@ -1,10 +1,10 @@
-chrome_83 = {
+chrome_84 = {
         "browserName": "chrome",
         "version": "83.0",
         "enableVNC": True,
         "enableVideo": False
     }
-chrome_81 = {
+chrome_83 = {
         "browserName": "chrome",
         "version": "83.0",
         "enableVNC": True,

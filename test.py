@@ -24,7 +24,7 @@ def test_site_login_chrome():
     driver.find_element_by_name("password").send_keys(pass_at)
     driver.find_element_by_xpath("//button[@class='btn modal__btn']").click()
 
-    driver.find_element_by_link_text("Создать курс в папке").click()
+    assert driver.find_element_by_link_text("Создать курс в папке").is_displayed() == True
     driver.quit()
     time.sleep(15)
 
