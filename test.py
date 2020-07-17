@@ -1,4 +1,5 @@
 import remote_driver
+import conftest
 import browsers
 from selenium import webdriver
 import time
@@ -8,13 +9,14 @@ import re
 # import lorem
 from selenium.webdriver.common.keys import Keys
 
+
 @pytest.mark.order1
 def test_site_login_chrome():
-    capabilities = browsers.chrome_84
-    driver = webdriver.Remote(
-        command_executor=remote_driver.ip_selenoid,
-        desired_capabilities=capabilities)
-    driver.maximize_window()
+#    capabilities = remote_driver.browser
+#    driver = webdriver.Remote(
+#        command_executor=remote_driver.ip_selenoid,
+#        desired_capabilities=capabilities)
+#    driver.maximize_window()
 
     login_at = "radwexe@mail.ru"
     pass_at = "111"
@@ -28,13 +30,13 @@ def test_site_login_chrome():
     driver.find_element_by_xpath("//button[@class='btn modal__btn']").click()
 
     assert driver.find_element_by_link_text("Создать курс в папке").is_displayed() == True
-    driver.quit()
-    time.sleep(15)
+#    driver.quit()
+#    time.sleep(15)
 
 
 @pytest.mark.order2
 def test_site_create_cours():
-    capabilities = browsers.chrome_84
+    capabilities = remote_driver.browser
     driver = webdriver.Remote(
         command_executor=remote_driver.ip_selenoid,
         desired_capabilities=capabilities)
@@ -60,7 +62,7 @@ def test_site_create_cours():
 
 @pytest.mark.order3
 def test_site_create_lesson_theory():
-    capabilities = browsers.chrome_84
+    capabilities = remote_driver.browser
     driver = webdriver.Remote(
         command_executor=remote_driver.ip_selenoid,
         desired_capabilities=capabilities)
@@ -87,7 +89,7 @@ def test_site_create_lesson_theory():
 
 @pytest.mark.order4
 def test_site_create_lesson_task_type_1_text_report():
-    capabilities = browsers.chrome_84
+    capabilities = remote_driver.browser
     driver = webdriver.Remote(
         command_executor=remote_driver.ip_selenoid,
         desired_capabilities=capabilities)
@@ -128,7 +130,7 @@ def test_site_create_lesson_task_type_1_text_report():
 
 @pytest.mark.order5
 def test_site_create_lesson_task_type_2_filling_the_gaps():
-    capabilities = browsers.chrome_84
+    capabilities = remote_driver.browser
     driver = webdriver.Remote(
         command_executor=remote_driver.ip_selenoid,
         desired_capabilities=capabilities)
@@ -170,7 +172,7 @@ def test_site_create_lesson_task_type_2_filling_the_gaps():
 
 @pytest.mark.order6
 def test_site_create_lesson_task_type_3_upload_file():
-    capabilities = browsers.chrome_84
+    capabilities = remote_driver.browser
     driver = webdriver.Remote(
         command_executor=remote_driver.ip_selenoid,
         desired_capabilities=capabilities)
@@ -210,8 +212,8 @@ def test_site_create_lesson_task_type_3_upload_file():
 
 
 @pytest.mark.order7
-def test_site_create_lesson_task_type_4_upload_file():
-    capabilities = browsers.chrome_84
+def test_site_create_lesson_task_type_4_upload_voice_message():
+    capabilities = remote_driver.browser
     driver = webdriver.Remote(
         command_executor=remote_driver.ip_selenoid,
         desired_capabilities=capabilities)
@@ -229,9 +231,9 @@ def test_site_create_lesson_task_type_4_upload_file():
         x.click()
 
     driver.find_element_by_xpath("//textarea[@name='lesson[description]']").send_keys(
-        "Добавить теоретический блок task_type_4_upload_file")
+        "Добавить теоретический блок task_type_4_upload_voice_message")
     driver.find_element_by_xpath("//textarea[@name='lesson[curator_comment]']").send_keys(
-        "Добавить инструкцию для наставника task_type_4_upload_file")
+        "Добавить инструкцию для наставника task_type_4_upload_voice_message")
 
     # Добавить задание
     driver.find_element_by_id("select2-chosen-4").click()
@@ -240,10 +242,10 @@ def test_site_create_lesson_task_type_4_upload_file():
     driver.find_element_by_xpath("//a[@class='cke_button cke_button__source cke_button_off']").click()
 
     driver.find_element_by_xpath("//span[@class='js-toggleInput']").click()
-    driver.find_element_by_name("lesson[questions][0][question]").send_keys("Текст вопроса - task_type_4_upload_file")
+    driver.find_element_by_name("lesson[questions][0][question]").send_keys("Текст вопроса - task_type_4_voice_message")
 
     driver.find_element_by_xpath("//input[@id='title']").send_keys(
-        "Название урока - task_type_3_upload_file" + Keys.TAB + Keys.TAB + Keys.TAB + "Пояснение для вопроса task_type_4_upload_file")
+        "Название урока - task_type_3_upload_voice_message" + Keys.TAB + Keys.TAB + Keys.TAB + "Пояснение для вопроса task_type_4_upload_voice_message")
 
     driver.find_element_by_xpath("//span[@class='b-btn button fl-r js-submit']").click()
     time.sleep(10)
@@ -251,8 +253,51 @@ def test_site_create_lesson_task_type_4_upload_file():
 
 
 @pytest.mark.order8
+def test_site_create_lesson_task_type_5_statistics():
+    assert 2 == 2
+#    capabilities = remote_driver.browser
+#    driver = webdriver.Remote(
+#        command_executor=remote_driver.ip_selenoid,
+#        desired_capabilities=capabilities)
+#    driver.maximize_window()
+#
+#    driver.implicitly_wait(10)
+#    driver.get("https://antitreningi.ru/account/auth?&token=6auklaju4ccqs4vuj4a48vfvoe")
+#    # Create_lesson_task
+#    driver.find_element_by_link_text("Название курса").click()
+#    driver.find_element_by_link_text("Уроки").click()
+#    driver.find_element_by_xpath("//button[contains(@class,'button js-popup-trigger')]").click()
+#    driver.find_element_by_xpath("//div[@id='pu_lestype']//a[2]").click()
+#    for x in driver.find_elements_by_xpath(
+#            "//span[@class='b-btn button button_light button_blank js-description_toggler']"):
+#        x.click()
+#
+#    driver.find_element_by_xpath("//textarea[@name='lesson[description]']").send_keys(
+#        "Добавить теоретический блок task_type_5_statistics")
+#    driver.find_element_by_xpath("//textarea[@name='lesson[curator_comment]']").send_keys(
+#        "Добавить инструкцию для наставника task_type_5_statistics")
+#
+#    # Добавить задание
+#    driver.find_element_by_id("select2-chosen-4").click()
+#    driver.find_element_by_xpath("//li[4]//div[1]").click()
+#    driver.find_element_by_xpath("//button[@class='button js-more']").click()
+#    driver.find_element_by_xpath("//input[@class='js-task-stats-newname']").send_keys("Название показателя")
+
+
+
+
+
+
+
+
+
+
+
+
+
+@pytest.mark.order8
 def test_site_delete_cours():
-    capabilities = browsers.chrome_84
+    capabilities = remote_driver.browser
     driver = webdriver.Remote(
         command_executor=remote_driver.ip_selenoid,
         desired_capabilities=capabilities)
@@ -274,7 +319,7 @@ def test_site_delete_cours():
 
 @pytest.mark.order9
 def test_site_delete_cours_from_basket():
-    capabilities = browsers.chrome_84
+    capabilities = remote_driver.browser
     driver = webdriver.Remote(
         command_executor=remote_driver.ip_selenoid,
         desired_capabilities=capabilities)
