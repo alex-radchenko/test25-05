@@ -41,10 +41,7 @@ def test_site_create_cours():
         command_executor=remote_driver.ip_selenoid,
         desired_capabilities=capabilities).maximize_window()
 
-    login_at = "radwexe@mail.ru"
-    pass_at = "111"
-
-    driver.get('https://antitreningi.ru')
+    driver.get("https://antitreningi.ru/account/auth?&token=6auklaju4ccqs4vuj4a48vfvoe")
     driver.implicitly_wait(10)
     # Create_cours
     driver.find_element_by_link_text("Создать курс в папке").click()
