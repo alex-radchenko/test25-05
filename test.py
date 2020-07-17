@@ -293,7 +293,7 @@ def test_site_create_lesson_task_type_5_statistics():
 
 
 
-@pytest.mark.order8
+@pytest.mark.order9
 def test_site_delete_cours():
     capabilities = remote_driver.browser
     driver = webdriver.Remote(
@@ -315,7 +315,7 @@ def test_site_delete_cours():
     time.sleep(15)
 
 
-@pytest.mark.order9
+@pytest.mark.order10
 def test_site_delete_cours_from_basket():
     capabilities = remote_driver.browser
     driver = webdriver.Remote(
