@@ -9,8 +9,8 @@ import re
 from selenium.webdriver.common.keys import Keys
 
 
-@pytest.fixture(scope='session')
-def selenium_driver(request):
+@pytest.fixture(scope="function")
+def browser():
     capabilities = remote_driver.browser
     driver = webdriver.Remote(
         command_executor=remote_driver.ip_selenoid,
