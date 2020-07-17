@@ -15,7 +15,7 @@ def test_site_login_chrome():
     login_at = "radwexe@mail.ru"
     pass_at = "111"
 
-    driver.get('http://at.dev01.1iu.ru')
+    driver.get('https://antitreningi.ru')
     driver.implicitly_wait(10)
 
     driver.find_element_by_xpath("//li[3]//a[1]").click()
@@ -30,14 +30,16 @@ def test_site_login_chrome():
 
 @pytest.mark.order2
 def test_site_create_cours():
+    #driver = remote_driver.dr
+    #driver.maximize_window()
     driver = remote_driver.dr
     driver.maximize_window()
-
+    login_at = "radwexe@mail.ru"
+    pass_at = "111"
     driver.implicitly_wait(10)
-    driver.get("https://antitreningi.ru/account/auth?&token=6auklaju4ccqs4vuj4a48vfvoe")
-
+    driver.get('https://antitreningi.ru')
+    #driver.get("https://antitreningi.ru/account/auth?&token=6auklaju4ccqs4vuj4a48vfvoe")
     #Create_cours
-
     driver.find_element_by_link_text("Создать курс в папке").click()
     driver.find_element_by_xpath("//input[@id='title']").send_keys("Название курса")
     driver.find_element_by_xpath("//div[@class='diary-settings__descr__wrap']//span[2]").click()
