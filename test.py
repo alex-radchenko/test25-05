@@ -58,9 +58,8 @@ def test_site_create_lesson_theory():
     driver = remote_driver.dr
     driver.maximize_window()
 
-    driver.implicitly_wait(10)
     driver.get("https://antitreningi.ru/account/auth?&token=6auklaju4ccqs4vuj4a48vfvoe")
-
+    driver.implicitly_wait(10)
     #Create_lesson_theory
 
     driver.find_element_by_link_text("Название курса").click()
