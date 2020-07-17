@@ -15,7 +15,8 @@ def test_site_login_chrome():
     capabilities = browsers.chrome_84
     driver = webdriver.Remote(
         command_executor=remote_driver.ip_selenoid,
-        desired_capabilities=capabilities).maximize_window()
+        desired_capabilities=capabilities)
+    driver.maximize_window()
 
     login_at = "radwexe@mail.ru"
     pass_at = "111"
@@ -66,8 +67,7 @@ def test_site_create_lesson_theory():
     capabilities = browsers.chrome_84
     driver = webdriver.Remote(
         command_executor=remote_driver.ip_selenoid,
-        desired_capabilities=capabilities).maximize_window()
-
+        desired_capabilities=capabilities)
     driver.maximize_window()
 
     driver.get("https://antitreningi.ru/account/auth?&token=6auklaju4ccqs4vuj4a48vfvoe")
@@ -94,8 +94,7 @@ def test_site_create_lesson_task_type_1_text_report():
     capabilities = browsers.chrome_84
     driver = webdriver.Remote(
         command_executor=remote_driver.ip_selenoid,
-        desired_capabilities=capabilities).maximize_window()
-
+        desired_capabilities=capabilities)
     driver.maximize_window()
 
     driver.implicitly_wait(10)
@@ -136,8 +135,7 @@ def test_site_create_lesson_task_type_2_filling_the_gaps():
     capabilities = browsers.chrome_84
     driver = webdriver.Remote(
         command_executor=remote_driver.ip_selenoid,
-        desired_capabilities=capabilities).maximize_window()
-
+        desired_capabilities=capabilities)
     driver.maximize_window()
 
     driver.implicitly_wait(10)
@@ -179,8 +177,7 @@ def test_site_create_lesson_task_type_3_upload_file():
     capabilities = browsers.chrome_84
     driver = webdriver.Remote(
         command_executor=remote_driver.ip_selenoid,
-        desired_capabilities=capabilities).maximize_window()
-
+        desired_capabilities=capabilities)
     driver.maximize_window()
 
     driver.implicitly_wait(10)
@@ -221,7 +218,7 @@ def test_site_create_lesson_task_type_4_upload_file():
     capabilities = browsers.chrome_84
     driver = webdriver.Remote(
         command_executor=remote_driver.ip_selenoid,
-        desired_capabilities=capabilities).maximize_window()
+        desired_capabilities=capabilities)
     driver.maximize_window()
 
     driver.implicitly_wait(10)
@@ -262,7 +259,7 @@ def test_site_delete_cours():
     capabilities = browsers.chrome_84
     driver = webdriver.Remote(
         command_executor=remote_driver.ip_selenoid,
-        desired_capabilities=capabilities).maximize_window()
+        desired_capabilities=capabilities)
     driver.maximize_window()
 
     driver.implicitly_wait(10)
@@ -284,7 +281,7 @@ def test_site_delete_cours_from_basket():
     capabilities = browsers.chrome_84
     driver = webdriver.Remote(
         command_executor=remote_driver.ip_selenoid,
-        desired_capabilities=capabilities).maximize_window()
+        desired_capabilities=capabilities)
     driver.maximize_window()
 
     driver.implicitly_wait(10)
