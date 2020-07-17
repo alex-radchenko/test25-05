@@ -1,7 +1,5 @@
 from selenium import webdriver
 import browsers
-
-capabilities = browsers.chrome_84
-dr = webdriver.Remote(
-        command_executor="http://128.199.103.130:4444/wd/hub",
-        desired_capabilities=capabilities)
+ip_selenoid = "http://128.199.103.130:4444/wd/hub"
+br = browsers.chrome_84
+ip_selenoid = "http://128.199.103.130:4444/wd/hub"
