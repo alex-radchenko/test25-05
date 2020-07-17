@@ -1,5 +1,4 @@
 import remote_driver
-import conftest
 import browsers
 from selenium import webdriver
 import time
@@ -9,14 +8,13 @@ import re
 # import lorem
 from selenium.webdriver.common.keys import Keys
 
-
 @pytest.mark.order1
 def test_site_login_chrome():
-#    capabilities = remote_driver.browser
-#    driver = webdriver.Remote(
-#        command_executor=remote_driver.ip_selenoid,
-#        desired_capabilities=capabilities)
-#    driver.maximize_window()
+    capabilities = remote_driver.browser
+    driver = webdriver.Remote(
+        command_executor=remote_driver.ip_selenoid,
+        desired_capabilities=capabilities)
+    driver.maximize_window()
 
     login_at = "radwexe@mail.ru"
     pass_at = "111"
@@ -30,8 +28,8 @@ def test_site_login_chrome():
     driver.find_element_by_xpath("//button[@class='btn modal__btn']").click()
 
     assert driver.find_element_by_link_text("Создать курс в папке").is_displayed() == True
-#    driver.quit()
-#    time.sleep(15)
+    driver.quit()
+    time.sleep(15)
 
 
 @pytest.mark.order2
