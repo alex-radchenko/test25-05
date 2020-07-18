@@ -1,12 +1,6 @@
 import remote_driver
-import browsers
 from selenium import webdriver
-import time
 import pytest
-import json
-import re
-# import lorem
-from selenium.webdriver.common.keys import Keys
 
 
 @pytest.fixture(scope="function")

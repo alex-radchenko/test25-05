@@ -1,11 +1,5 @@
-import remote_driver
-import browsers
-from selenium import webdriver
 import time
 import pytest
-import json
-import re
-# import lorem
 from selenium.webdriver.common.keys import Keys
 
 @pytest.mark.order1
@@ -22,7 +16,6 @@ def test_site_login_chrome(browser):
     browser.find_element_by_xpath("//button[@class='btn modal__btn']").click()
 
     assert browser.find_element_by_link_text("Создать курс в папке").is_displayed() == True
-
 
 @pytest.mark.order2
 def test_site_create_cours(browser):
@@ -125,7 +118,6 @@ def test_site_create_lesson_task_type_2_filling_the_gaps(browser):
 @pytest.mark.order6
 def test_site_create_lesson_task_type_3_upload_file(browser):
 
-    browser.implicitly_wait(10)
     browser.get("https://antitreningi.ru/account/auth?&token=6auklaju4ccqs4vuj4a48vfvoe")
     # Create_lesson_task
     browser.find_element_by_link_text("Название курса").click()
@@ -157,7 +149,6 @@ def test_site_create_lesson_task_type_3_upload_file(browser):
 
 @pytest.mark.order7
 def test_site_create_lesson_task_type_4_upload_voice_message(browser):
-    browser.implicitly_wait(10)
     browser.get("https://antitreningi.ru/account/auth?&token=6auklaju4ccqs4vuj4a48vfvoe")
     # Create_lesson_task
     browser.find_element_by_link_text("Название курса").click()
