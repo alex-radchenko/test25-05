@@ -177,6 +177,7 @@ def test_site_create_lesson_task_type_4_upload_voice_message(browser):
         "Название урока - task_type_3_upload_voice_message" + Keys.TAB + Keys.TAB + Keys.TAB + "Пояснение для вопроса task_type_4_upload_voice_message")
 
     browser.find_element_by_xpath("//span[@class='b-btn button fl-r js-submit']").click()
+    time.sleep(3)
 
 @pytest.mark.order8
 def test_site_create_lesson_task_type_5_statistics(browser):
