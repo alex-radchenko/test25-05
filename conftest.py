@@ -16,6 +16,6 @@ def browser():
     driver.maximize_window()
     driver.implicitly_wait(10)
     yield driver
-    allure.attach(driver.get_screenshot_as_png(), name=random.randint(1,9999999999999), attachment_type=AttachmentType.PNG)
+    allure.attach(driver.get_screenshot_as_png(), attachment_type=AttachmentType.PNG)
 
     driver.quit()
