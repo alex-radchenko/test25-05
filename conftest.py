@@ -1,5 +1,6 @@
 import remote_driver
 import time
+import random
 from selenium import webdriver
 import pytest
 import allure
@@ -14,6 +15,5 @@ def browser():
     driver.maximize_window()
     driver.implicitly_wait(10)
     yield driver
-    allure.attach(browser.get_screenshot_as_png(), name=time.strftime("%Y_%m_%d_%H_%M_%S"), attachment_type=AttachmentType.PNG)
-
+    allure.attach(browser.get_screenshot_as_png(), name=random.randint(1,9999999999999), attachment_type=AttachmentType.PNG)
     driver.quit()
