@@ -1,6 +1,8 @@
 import remote_driver
 from selenium import webdriver
 import pytest
+import allure
+from allure_commons.types import AttachmentType
 
 
 
@@ -13,4 +15,5 @@ def browser():
     driver.maximize_window()
     driver.implicitly_wait(10)
     yield driver
+    allure.attach("engine.title", driver.get_screenshot_as_png(), type=AttachmentType.PNG)
     driver.quit()
