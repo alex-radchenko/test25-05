@@ -2,6 +2,8 @@ import time
 import pytest
 from selenium.webdriver.common.keys import Keys
 import random
+from allure_commons.types import AttachmentType
+import allure
 
 @pytest.mark.order1
 def test_site_login_chrome(browser):
@@ -15,6 +17,7 @@ def test_site_login_chrome(browser):
     browser.find_element_by_name("password").send_keys(pass_at)
     browser.find_element_by_xpath("//button[@class='btn modal__btn']").click()
     assert browser.find_element_by_link_text("Создать курс в папке").is_displayed() == True
+    allure.attach("engine.title", browser.get_screenshot_as_png(), attachment_type=AttachmentType.PNG)
 
 @pytest.mark.order2
 def test_site_create_cours(browser):

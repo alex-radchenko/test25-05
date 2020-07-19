@@ -8,8 +8,8 @@ verify_ssl = true
 [packages]
 pytest = "*"
 selenium = "*"
-allure-pytest = "*"
 lorem = "*"
+allure-pytest = "*"
 
 [requires]
 python_version = "3.6"
