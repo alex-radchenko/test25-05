@@ -9,7 +9,8 @@ import allure
 @allure.title("Простой вход через форму login")
 @pytest.mark.order1
 def test_site_login_chrome(browser):
-    allure.environment(country=u'Россия', browser="Chrome")
+    allure.environment(report='Allure report', browser=u'Я.Браузер')
+    allure.environment(hostname='https://github.com/allure-framework/allure-pytest')
     login_at = "radwexe@mail.ru"
     pass_at = "111"
 
