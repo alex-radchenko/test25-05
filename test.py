@@ -5,6 +5,8 @@ import random
 from allure_commons.types import AttachmentType
 import allure
 
+@allure.feature('Title')
+@allure.title("Простой вход через форму login")
 @pytest.mark.order1
 def test_site_login_chrome(browser):
     login_at = "radwexe@mail.ru"
@@ -19,8 +21,10 @@ def test_site_login_chrome(browser):
     assert browser.find_element_by_link_text("Создать курс в папке").is_displayed() == True
     allure.attach(browser.get_screenshot_as_png(), name="Screenshot", attachment_type=AttachmentType.PNG)
 
+@allure.feature('Title')
+@allure.title("Создание курса")
 @pytest.mark.order2
-def test_site_create_cours(browser):
+def test_site_create_kurs(browser):
 
     browser.get("https://antitreningi.ru/account/auth?&token=6auklaju4ccqs4vuj4a48vfvoe")
     browser.implicitly_wait(10)
@@ -35,8 +39,6 @@ def test_site_create_cours(browser):
     browser.find_element_by_link_text("Продолжить").click()
     assert browser.find_element_by_xpath("//div[@class='block__bigtitle js-bigtitle']").text == "Название курса"
     browser.find_element_by_xpath("//button[contains(@class,'button js-popup-trigger')]").click()
-    allure.attach(browser.get_screenshot_as_png(), name="Screenshot1", attachment_type=AttachmentType.PNG)
-
 @pytest.mark.order3
 def test_site_create_lesson_theory(browser):
     browser.get("https://antitreningi.ru/account/auth?&token=6auklaju4ccqs4vuj4a48vfvoe")
