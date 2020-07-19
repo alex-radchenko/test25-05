@@ -18,6 +18,7 @@ def test_site_login_chrome(browser):
     browser.find_element_by_xpath("//button[@class='btn modal__btn']").click()
 
     assert browser.find_element_by_link_text("Создать курс в папке").is_displayed() == True
+    allure.attach(browser.get_screenshot_as_png(), name="Screenshot", attachment_type=AttachmentType.PNG)
 
 @pytest.mark.order2
 def test_site_create_cours(browser):
@@ -35,6 +36,7 @@ def test_site_create_cours(browser):
     browser.find_element_by_link_text("Продолжить").click()
     assert browser.find_element_by_xpath("//div[@class='block__bigtitle js-bigtitle']").text == "Название курса"
     browser.find_element_by_xpath("//button[contains(@class,'button js-popup-trigger')]").click()
+    allure.attach(browser.get_screenshot_as_png(), name="Screenshot", attachment_type=AttachmentType.PNG)
 
 @pytest.mark.order3
 def test_site_create_lesson_theory(browser):
@@ -53,6 +55,7 @@ def test_site_create_lesson_theory(browser):
     browser.find_element_by_tag_name('body').send_keys(Keys.END)
     browser.find_element_by_xpath("//span[@class='b-btn button fl-r js-submit']").click()
     browser.find_element_by_xpath("//a[@class='b-btn animate fl-l js-popup-close']").click()
+    allure.attach(browser.get_screenshot_as_png(), name="Screenshot", attachment_type=AttachmentType.PNG)
 
 @pytest.mark.order4
 def test_site_create_lesson_task_type_1_text_report(browser):
@@ -83,6 +86,7 @@ def test_site_create_lesson_task_type_1_text_report(browser):
     browser.find_element_by_xpath("//input[@id='title']").send_keys(
         "Название урока - task_type_1_text_report" + Keys.TAB + Keys.TAB + Keys.TAB + "Пояснение для вопроса task_type_1_text_report")
     browser.find_element_by_xpath("//span[@class='b-btn button fl-r js-submit']").click()
+    allure.attach(browser.get_screenshot_as_png(), name="Screenshot", attachment_type=AttachmentType.PNG)
 
 @pytest.mark.order5
 def test_site_create_lesson_task_type_2_filling_the_gaps(browser):
@@ -116,6 +120,7 @@ def test_site_create_lesson_task_type_2_filling_the_gaps(browser):
         "Название урока - task_type_2_filling_the_gaps" + Keys.TAB + Keys.TAB + Keys.TAB + "Пояснение для вопроса task_type_2_filling_the_gaps ###")
 
     browser.find_element_by_xpath("//span[@class='b-btn button fl-r js-submit']").click()
+    allure.attach(browser.get_screenshot_as_png(), name="Screenshot", attachment_type=AttachmentType.PNG)
 
 @pytest.mark.order6
 def test_site_create_lesson_task_type_3_upload_file(browser):
@@ -148,6 +153,7 @@ def test_site_create_lesson_task_type_3_upload_file(browser):
         "Название урока - task_type_3_upload_file" + Keys.TAB + Keys.TAB + Keys.TAB + "Пояснение для вопроса task_type_3_upload_file")
 
     browser.find_element_by_xpath("//span[@class='b-btn button fl-r js-submit']").click()
+    allure.attach(browser.get_screenshot_as_png(), name="Screenshot", attachment_type=AttachmentType.PNG)
 
 @pytest.mark.order7
 def test_site_create_lesson_task_type_4_upload_voice_message(browser):
@@ -180,6 +186,7 @@ def test_site_create_lesson_task_type_4_upload_voice_message(browser):
 
     browser.find_element_by_xpath("//span[@class='b-btn button fl-r js-submit']").click()
     time.sleep(3)
+    allure.attach(browser.get_screenshot_as_png(), name="Screenshot", attachment_type=AttachmentType.PNG)
 
 @pytest.mark.order8
 def test_site_create_lesson_task_type_5_statistics(browser):
@@ -219,6 +226,7 @@ def test_site_delete_cours(browser):
         browser.find_element_by_xpath(
             "//div[contains(@class,'MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-center MuiGrid-justify-xs-space-between')]//div[1]//div[1]//div[1]//button[1]//span[1]").click()
         time.sleep(3)
+    allure.attach(browser.get_screenshot_as_png(), name="Screenshot", attachment_type=AttachmentType.PNG)
 
 @pytest.mark.order10
 def test_site_delete_cours_from_basket(browser):
@@ -230,3 +238,4 @@ def test_site_delete_cours_from_basket(browser):
         sel_del.click()
         browser.find_element_by_xpath(
             "//div[contains(@class,'MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-center MuiGrid-justify-xs-space-between')]//div[1]//div[1]//div[1]//button[1]//span[1]").click()
+    allure.attach(browser.get_screenshot_as_png(), name="Screenshot", attachment_type=AttachmentType.PNG)
