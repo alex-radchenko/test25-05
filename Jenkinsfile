@@ -6,7 +6,7 @@ node {
     }
 
     stage("test") {
-        sh '/usr/local/bin/pipenv run /usr/local/bin/pytest -v --tb=line --reruns 2 test.py -sv --alluredir=allure_result'
+        sh '/usr/local/bin/pipenv run /usr/local/bin/pytest -v --tb=line --reruns 2 test.py -k test_site_create_cours -sv --alluredir=allure_result'
     }
     stage("report") {
         script {
