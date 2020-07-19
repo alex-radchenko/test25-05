@@ -19,7 +19,7 @@ def test_site_login_chrome(browser):
     browser.find_element_by_name("password").send_keys(pass_at)
     browser.find_element_by_xpath("//button[@class='btn modal__btn']").click()
     assert browser.find_element_by_link_text("Создать курс в папке").is_displayed() == True
-    allure.attach(browser.get_screenshot_as_png(), name="Screenshot", attachment_type=AttachmentType.PNG)
+    #allure.attach(browser.get_screenshot_as_png(), name="Screenshot", attachment_type=AttachmentType.PNG)
 
 @allure.feature('Title')
 @allure.title("Создание курса")
