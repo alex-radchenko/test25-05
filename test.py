@@ -1,10 +1,10 @@
 import time
 import pytest
 from selenium.webdriver.common.keys import Keys
+import allure
 
 @pytest.mark.order1
 def test_site_login_chrome(browser):
-
     login_at = "radwexe@mail.ru"
     pass_at = "111"
 
@@ -16,6 +16,7 @@ def test_site_login_chrome(browser):
     browser.find_element_by_xpath("//button[@class='btn modal__btn']").click()
 
     assert browser.find_element_by_link_text("Создать курс в папке").is_displayed() == True
+    allure.attach('error_screen', browser.get_screenshot_as_png())
 
 @pytest.mark.order2
 def test_site_create_cours(browser):
