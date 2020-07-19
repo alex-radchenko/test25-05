@@ -35,7 +35,7 @@ def test_site_create_cours(browser):
     browser.find_element_by_link_text("Продолжить").click()
     assert browser.find_element_by_xpath("//div[@class='block__bigtitle js-bigtitle']").text == "Название курса"
     browser.find_element_by_xpath("//button[contains(@class,'button js-popup-trigger')]").click()
-    allure.attach(browser.get_screenshot_as_png(), name="Screenshot", attachment_type=AttachmentType.PNG)
+    allure.attach(browser.get_screenshot_as_png(), name="Screenshot1", attachment_type=AttachmentType.PNG)
 
 @pytest.mark.order3
 def test_site_create_lesson_theory(browser):
