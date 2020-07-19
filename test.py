@@ -1,7 +1,9 @@
 import time
 import pytest
 from selenium.webdriver.common.keys import Keys
+from allure_commons.types import AttachmentType
 import allure
+
 
 @pytest.mark.order1
 def test_site_login_chrome(browser):
@@ -16,11 +18,7 @@ def test_site_login_chrome(browser):
     browser.find_element_by_xpath("//button[@class='btn modal__btn']").click()
 
     assert browser.find_element_by_link_text("Создать курс в папке").is_displayed() == True
-    allure.attach(
-        name='Скриншот',
-        contents=browser.get_screenshot_as_png(),
-        type=allure.constants.AttachmentType.PNG,
-    )
+    allure.attach(browser.get_screenshot_as_png(), name="Screenshot", attachment_type=AttachmentType.PNG)
 
 
 @pytest.mark.order2
