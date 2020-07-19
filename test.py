@@ -3,7 +3,7 @@ import pytest
 from selenium.webdriver.common.keys import Keys
 from allure_commons.types import AttachmentType
 import allure
-
+import random
 
 @pytest.mark.order1
 def test_site_login_chrome(browser):
@@ -18,6 +18,7 @@ def test_site_login_chrome(browser):
     browser.find_element_by_xpath("//button[@class='btn modal__btn']").click()
 
     assert browser.find_element_by_link_text("Создать курс в папке").is_displayed() == True
+    allure.attach(browser.get_screenshot_as_png(), name=random.randint(1,9999999999999), attachment_type=AttachmentType.PNG)
 
 @pytest.mark.order2
 def test_site_create_cours(browser):
