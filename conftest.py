@@ -17,6 +17,6 @@ def browser():
     driver.implicitly_wait(10)
     yield driver
 
-    allure.attach(random.randint(1, 9999999999999), driver.get_screenshot_as_png(), type=AttachmentType.PNG)
+    allure.attach(str(random.randint(1, 9999999999999)), driver.get_screenshot_as_png(), type=AttachmentType.PNG)
 
     driver.quit()
