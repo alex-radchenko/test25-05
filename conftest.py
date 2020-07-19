@@ -1,5 +1,6 @@
 import remote_driver
 from selenium import webdriver
+import allure
 import pytest
 
 

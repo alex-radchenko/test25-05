@@ -1,16 +1,14 @@
 import time
+import allure
 import pytest
 from selenium.webdriver.common.keys import Keys
 import random
 from allure_commons.types import AttachmentType
-import allure
 
 @allure.feature('Title')
 @allure.title("Простой вход через форму login")
 @pytest.mark.order1
 def test_site_login_chrome(browser):
-    allure.environment(report='Allure report', browser=u'Я.Браузер')
-    allure.environment(hostname='https://github.com/allure-framework/allure-pytest')
     login_at = "radwexe@mail.ru"
     pass_at = "111"
 
