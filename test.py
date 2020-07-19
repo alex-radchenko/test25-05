@@ -19,7 +19,7 @@ def test_site_login_chrome(browser):
 
     assert browser.find_element_by_link_text("Создать курс в папке").is_displayed() == True
 
-    allure.attach("engine.title", browser.get_screenshot_as_png(), type=AttachmentType.PNG)
+   # allure.attach("engine.title", browser.get_screenshot_as_png(), type=AttachmentType.PNG)
 
 @pytest.mark.order2
 def test_site_create_cours(browser):
