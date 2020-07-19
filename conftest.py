@@ -16,6 +16,6 @@ def browser():
     driver.maximize_window()
     driver.implicitly_wait(10)
     yield driver
-    allure.attach(driver.get_screenshot_as_png(), attachment_type=AttachmentType.PNG)
+    allure.attach('error_screen', browser.get_screenshot_as_png(), type=AttachmentType.PNG)
 
     driver.quit()
