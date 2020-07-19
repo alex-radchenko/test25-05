@@ -1,10 +1,7 @@
 import remote_driver
-import time
-import random
 from selenium import webdriver
 import pytest
-import allure
-from allure_commons.types import AttachmentType
+
 
 
 @pytest.fixture(scope="function")

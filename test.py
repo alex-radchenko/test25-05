@@ -18,7 +18,7 @@ def test_site_login_chrome(browser):
     browser.find_element_by_xpath("//button[@class='btn modal__btn']").click()
 
     assert browser.find_element_by_link_text("Создать курс в папке").is_displayed() == True
-    allure.attach("screenshot_1", browser.get_screenshot_as_png(), type=AttachmentType.PNG)
+    allure.attach('error_screen', browser.get_screenshot_as_png(), type=AttachmentType.PNG)
 
 @pytest.mark.order2
 def test_site_create_cours(browser):
