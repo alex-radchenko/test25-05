@@ -39,6 +39,9 @@ def test_site_create_kurs(browser):
     browser.find_element_by_link_text("Продолжить").click()
     assert browser.find_element_by_xpath("//div[@class='block__bigtitle js-bigtitle']").text == "Название курса"
     browser.find_element_by_xpath("//button[contains(@class,'button js-popup-trigger')]").click()
+
+@allure.feature('Title')
+@allure.title("Создание урока - Теория")
 @pytest.mark.order3
 def test_site_create_lesson_theory(browser):
     browser.get("https://antitreningi.ru/account/auth?&token=6auklaju4ccqs4vuj4a48vfvoe")
@@ -57,6 +60,8 @@ def test_site_create_lesson_theory(browser):
     browser.find_element_by_xpath("//span[@class='b-btn button fl-r js-submit']").click()
     browser.find_element_by_xpath("//a[@class='b-btn animate fl-l js-popup-close']").click()
 
+@allure.feature('Title')
+@allure.title("Создание урока - Задание - Тип - Текстовый отчет")
 @pytest.mark.order4
 def test_site_create_lesson_task_type_1_text_report(browser):
     browser.get("https://antitreningi.ru/account/auth?&token=6auklaju4ccqs4vuj4a48vfvoe")
@@ -87,6 +92,8 @@ def test_site_create_lesson_task_type_1_text_report(browser):
         "Название урока - task_type_1_text_report" + Keys.TAB + Keys.TAB + Keys.TAB + "Пояснение для вопроса task_type_1_text_report")
     browser.find_element_by_xpath("//span[@class='b-btn button fl-r js-submit']").click()
 
+@allure.feature('Title')
+@allure.title("Создание урока - Задание - Тип - Заполнение пробелов")
 @pytest.mark.order5
 def test_site_create_lesson_task_type_2_filling_the_gaps(browser):
     browser.implicitly_wait(10)
@@ -120,6 +127,8 @@ def test_site_create_lesson_task_type_2_filling_the_gaps(browser):
 
     browser.find_element_by_xpath("//span[@class='b-btn button fl-r js-submit']").click()
 
+@allure.feature('Title')
+@allure.title("Создание урока - Задание - Тип - Загрузка файлов")
 @pytest.mark.order6
 def test_site_create_lesson_task_type_3_upload_file(browser):
 
@@ -152,6 +161,8 @@ def test_site_create_lesson_task_type_3_upload_file(browser):
 
     browser.find_element_by_xpath("//span[@class='b-btn button fl-r js-submit']").click()
 
+@allure.feature('Title')
+@allure.title("Создание урока - Задание - Тип - Голосовое сообщение")
 @pytest.mark.order7
 def test_site_create_lesson_task_type_4_upload_voice_message(browser):
     browser.get("https://antitreningi.ru/account/auth?&token=6auklaju4ccqs4vuj4a48vfvoe")
@@ -211,6 +222,8 @@ def test_site_create_lesson_task_type_4_upload_voice_message(browser):
 
 
 
+@allure.feature('Title')
+@allure.title("Удаление всех курсов")
 @pytest.mark.order9
 def test_site_delete_cours(browser):
     browser.get("https://antitreningi.ru/account/auth?&token=6auklaju4ccqs4vuj4a48vfvoe")
@@ -223,6 +236,7 @@ def test_site_delete_cours(browser):
             "//div[contains(@class,'MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-center MuiGrid-justify-xs-space-between')]//div[1]//div[1]//div[1]//button[1]//span[1]").click()
         time.sleep(3)
 
+@allure.title("Удаление курсов из корзины")
 @pytest.mark.order10
 def test_site_delete_cours_from_basket(browser):
     browser.get("https://antitreningi.ru/account/auth?&token=6auklaju4ccqs4vuj4a48vfvoe")
