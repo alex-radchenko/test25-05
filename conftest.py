@@ -1,8 +1,8 @@
 import remote_driver
 from selenium import webdriver
 import pytest
-from allure_commons.types import AttachmentType
 import allure
+from allure_commons.types import AttachmentType
 
 @pytest.fixture(scope="function")
 def browser():
