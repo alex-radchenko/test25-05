@@ -2,8 +2,6 @@ import time
 import allure
 import pytest
 from selenium.webdriver.common.keys import Keys
-import random
-from allure_commons.types import AttachmentType
 
 @allure.feature('Title')
 @allure.title("Простой вход через форму login")

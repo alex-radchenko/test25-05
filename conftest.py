@@ -1,7 +1,8 @@
+import remote_driver
+from selenium import webdriver
 import allure
 import pytest
-from selenium import webdriver
-import remote_driver
+from allure import enviroment
 
 @pytest.fixture(scope="function")
 def browser():
