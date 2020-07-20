@@ -1,6 +1,6 @@
 chrome_84 = {
         "browserName": "chrome",
-        "version": "83.0",
+        "version": "84.0",
         "enableVNC": True,
         "enableVideo": False
     }

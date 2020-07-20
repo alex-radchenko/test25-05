@@ -2,6 +2,8 @@ import time
 import allure
 import pytest
 from selenium.webdriver.common.keys import Keys
+from PIL import Image
+import image_1
 
 @allure.feature('Title')
 @allure.title("Простой вход через форму login")
@@ -17,7 +19,18 @@ def test_site_login_chrome(browser):
     browser.find_element_by_name("password").send_keys(pass_at)
     browser.find_element_by_xpath("//button[@class='btn modal__btn']").click()
     assert browser.find_element_by_link_text("Создать курс в папке").is_displayed() == True
-    #allure.attach(browser.get_screenshot_as_png(), name="Screenshot", attachment_type=AttachmentType.PNG)
+    browser.save_screenshot('screenshot_1.png')
+    file_1 = "screenshot_1.png"
+    file_2 = "screenshot_2.png"
+
+    if int(image_1.percentage_difference(file_1, file_2)) >= 1:
+        print("Большая разница")
+        a1 = Image.open(file_1)
+        b1 = Image.open(file_2)
+        c = image_1.graphic_difference(a1, b1)
+        c.save('333.png')
+    #assert int(image_1.percentage_difference(file_1, file_2)) == 0
+    allure.attach('screenshot', Image.open(file_1))
 
 
 @allure.feature('Title')

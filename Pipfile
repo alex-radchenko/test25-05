@@ -10,6 +10,7 @@ pytest = "*"
 selenium = "*"
 lorem = "*"
 allure-pytest = "*"
+pillow = "*"
 
 [requires]
 python_version = "3.6"
