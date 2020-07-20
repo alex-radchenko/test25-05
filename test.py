@@ -5,7 +5,7 @@ from selenium.webdriver.common.keys import Keys
 from PIL import Image
 import image_1
 
-@allure.feature('TEST')
+@allure.feature("TEST")
 @allure.title("TEST")
 @pytest.mark.order0
 def test_site_test(browser):
