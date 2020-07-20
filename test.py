@@ -37,7 +37,6 @@ def test_site_test(browser):
     # assert int(image_1.percentage_difference(file_1, file_2)) == 0
     # allure.attach.file('333.png', attachment_type=allure.attachment_type.PNG)
 
-
 @allure.feature('Title')
 @allure.title("Простой вход через форму login")
 @pytest.mark.order1
