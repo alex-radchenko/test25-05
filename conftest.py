@@ -1,6 +1,7 @@
 import pytest
 from selenium import webdriver
 import remote_driver
+import allure
 
 @pytest.fixture(scope="function")
 def browser():
@@ -12,3 +13,12 @@ def browser():
     driver.implicitly_wait(10)
     yield driver
     driver.quit()
+
+
+@pytest.hookimpl(trylast=True)
+def pytest_configure(config):
+    allure.environment(
+        url='example.com',
+        browser=u'Google Chrome',
+        environment="production",
+    )

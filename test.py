@@ -20,6 +20,7 @@ def test_site_test(browser):
     browser.find_element_by_xpath("//button[@class='btn modal__btn']").click()
     assert browser.find_element_by_link_text("Создать курс в папке").is_displayed() == True
     browser.save_screenshot('screenshot_1.png')
+
     file_1 = "screenshot_1.png"
     file_2 = "screenshot_2.png"
 
