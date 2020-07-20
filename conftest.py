@@ -11,7 +11,6 @@ def browser():
         command_executor=remote_driver.ip_selenoid,
         desired_capabilities=capabilities)
     driver.maximize_window()
-    allure.enviroment()
     driver.implicitly_wait(10)
     yield driver
     driver.quit()
