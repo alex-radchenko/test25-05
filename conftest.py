@@ -3,7 +3,7 @@ import pytest
 from selenium import webdriver
 import remote_driver
 
-@pytest.fixture(scope="function")
+@pytest.fixture()
 def browser():
     capabilities = remote_driver.browser
     driver = webdriver.Remote(
