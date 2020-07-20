@@ -7,6 +7,7 @@ from allure_commons.types import AttachmentType
 
 @allure.feature('Title')
 @allure.title("Простой вход через форму login")
+@allure.enviroment()
 @pytest.mark.order1
 def test_site_login_chrome(browser):
     login_at = "radwexe@mail.ru"
@@ -20,6 +21,7 @@ def test_site_login_chrome(browser):
     browser.find_element_by_xpath("//button[@class='btn modal__btn']").click()
     assert browser.find_element_by_link_text("Создать курс в папке").is_displayed() == True
     #allure.attach(browser.get_screenshot_as_png(), name="Screenshot", attachment_type=AttachmentType.PNG)
+
 
 @allure.feature('Title')
 @allure.title("Создание курса")
@@ -237,6 +239,7 @@ def test_site_delete_cours(browser):
         time.sleep(3)
 
 @allure.title("Удаление курсов из корзины")
+@allure.feature
 @pytest.mark.order10
 def test_site_delete_cours_from_basket(browser):
     browser.get("https://antitreningi.ru/account/auth?&token=6auklaju4ccqs4vuj4a48vfvoe")
