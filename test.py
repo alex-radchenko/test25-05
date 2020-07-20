@@ -33,7 +33,7 @@ def test_site_test(browser):
 
     # assert int(image_1.percentage_difference(file_1, file_2)) == 0
     # allure.attach.file('333.png', attachment_type=allure.attachment_type.PNG)
-
+    assert int(image_1.percentage_difference(file_1, file_2)) == 0
 
 @allure.feature('Title')
 @allure.title("Простой вход через форму login")
@@ -267,7 +267,7 @@ def test_site_create_lesson_task_type_4_upload_voice_message(browser):
 
 
 
-@allure.feature('Title')
+@allure.feature('Удаление')
 @allure.title("Удаление всех курсов")
 @pytest.mark.order9
 def test_site_delete_cours(browser):
@@ -281,8 +281,8 @@ def test_site_delete_cours(browser):
             "//div[contains(@class,'MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-center MuiGrid-justify-xs-space-between')]//div[1]//div[1]//div[1]//button[1]//span[1]").click()
         time.sleep(3)
 
+@allure.feature('Удаление')
 @allure.title("Удаление курсов из корзины")
-@allure.feature
 @pytest.mark.order10
 def test_site_delete_cours_from_basket(browser):
     browser.get("https://antitreningi.ru/account/auth?&token=6auklaju4ccqs4vuj4a48vfvoe")
