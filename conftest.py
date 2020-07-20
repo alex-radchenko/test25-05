@@ -14,11 +14,3 @@ def browser():
     yield driver
     driver.quit()
 
-
-@pytest.hookimpl(trylast=True)
-def pytest_configure(config):
-    allure.environment(
-        url='example.com',
-        browser=u'Google Chrome',
-        environment="production",
-    )
