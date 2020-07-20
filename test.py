@@ -5,9 +5,41 @@ from selenium.webdriver.common.keys import Keys
 from PIL import Image
 import image_1
 
+
+@allure.feature('TEST')
+@allure.title("TEST")
+@pytest.mark.order0
+def test_site_test(browser):
+    login_at = "radwexe@mail.ru"
+    pass_at = "111"
+
+    browser.get('https://antitreningi.ru')
+
+    browser.find_element_by_xpath("//li[3]//a[1]").click()
+    browser.find_element_by_name("email").send_keys(login_at)
+    browser.find_element_by_name("password").send_keys(pass_at)
+    browser.find_element_by_xpath("//button[@class='btn modal__btn']").click()
+    assert browser.find_element_by_link_text("Создать курс в папке").is_displayed() == True
+    browser.save_screenshot('screenshot_1.png')
+    file_1 = "screenshot_1.png"
+    file_2 = "screenshot_2.png"
+
+    if int(image_1.percentage_difference(file_1, file_2)) >= 1:
+        print("Большая разница")
+        a1 = Image.open(file_1)
+        b1 = Image.open(file_2)
+        c = image_1.graphic_difference(a1, b1)
+        # c.save('333.png')
+        allure.attach.file(c, attachment_type=allure.attachment_type.PNG)
+
+    # assert int(image_1.percentage_difference(file_1, file_2)) == 0
+    # allure.attach.file('333.png', attachment_type=allure.attachment_type.PNG)
+
+
 @allure.feature('Title')
 @allure.title("Простой вход через форму login")
 @pytest.mark.order1
+
 def test_site_login_chrome(browser):
     login_at = "radwexe@mail.ru"
     pass_at = "111"
@@ -28,9 +60,10 @@ def test_site_login_chrome(browser):
         a1 = Image.open(file_1)
         b1 = Image.open(file_2)
         c = image_1.graphic_difference(a1, b1)
-        c.save('333.png')
+        #c.save('333.png')
+
     #assert int(image_1.percentage_difference(file_1, file_2)) == 0
-    allure.attach.file('333.png', attachment_type=allure.attachment_type.PNG)
+    #allure.attach.file('333.png', attachment_type=allure.attachment_type.PNG)
 
 
 
