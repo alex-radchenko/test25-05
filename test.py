@@ -9,6 +9,7 @@ import image_1
 @allure.title("TEST")
 @pytest.mark.order0
 def test_site_test(browser):
+    allure.step("Водим логин и пароль")
     login_at = "radwexe@mail.ru"
     pass_at = "111"
     browser.get('https://antitreningi.ru')
@@ -28,7 +29,6 @@ def test_site_test(browser):
         c = image_1.graphic_difference(a1, b1)
         c.save('333.png')
         allure.attach.file("333.png", attachment_type=allure.attachment_type.PNG)
-        allure.step("Большая разница")
     # assert int(image_1.percentage_difference(file_1, file_2)) == 0
     # allure.attach.file('333.png', attachment_type=allure.attachment_type.PNG)
 
