@@ -30,7 +30,8 @@ def test_site_login_chrome(browser):
         c = image_1.graphic_difference(a1, b1)
         c.save('333.png')
     #assert int(image_1.percentage_difference(file_1, file_2)) == 0
-    allure.attach('screenshot', Image.open(file_1))
+    allure.attach.file('333.png', attachment_type=allure.attachment_type.PNG)
+
 
 
 @allure.feature('Title')
