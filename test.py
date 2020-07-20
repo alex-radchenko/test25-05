@@ -5,7 +5,6 @@ from selenium.webdriver.common.keys import Keys
 from PIL import Image
 import image_1
 
-
 @allure.feature('TEST')
 @allure.title("TEST")
 @pytest.mark.order0
@@ -30,7 +29,7 @@ def test_site_test(browser):
         b1 = Image.open(file_2)
         c = image_1.graphic_difference(a1, b1)
         # c.save('333.png')
-        allure.attach.file(c, attachment_type=allure.attachment_type.PNG)
+        allure.attach.file("333.png", attachment_type=allure.attachment_type.PNG)
 
     # assert int(image_1.percentage_difference(file_1, file_2)) == 0
     # allure.attach.file('333.png', attachment_type=allure.attachment_type.PNG)
