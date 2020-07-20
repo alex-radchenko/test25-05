@@ -28,12 +28,7 @@ def test_site_test(browser):
         c = image_1.graphic_difference(a1, b1)
         c.save('333.png')
         allure.attach.file("333.png", attachment_type=allure.attachment_type.PNG)
-        allure.description("""
-        Multiline test description.
-        That comes from the allure.description decorator.
-        Nothing special about it.
-        """)
-
+        allure.step("Большая разница")
     # assert int(image_1.percentage_difference(file_1, file_2)) == 0
     # allure.attach.file('333.png', attachment_type=allure.attachment_type.PNG)
 
