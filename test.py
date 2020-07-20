@@ -7,7 +7,6 @@ from allure_commons.types import AttachmentType
 
 @allure.feature('Title')
 @allure.title("Простой вход через форму login")
-@allure.enviroment()
 @pytest.mark.order1
 def test_site_login_chrome(browser):
     login_at = "radwexe@mail.ru"
