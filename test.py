@@ -11,7 +11,6 @@ import image_1
 def test_site_test(browser):
     login_at = "radwexe@mail.ru"
     pass_at = "111"
-
     browser.get('https://antitreningi.ru')
 
     browser.find_element_by_xpath("//li[3]//a[1]").click()
