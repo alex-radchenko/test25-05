@@ -28,14 +28,14 @@ def test_site_test(browser):
 
     file_1 = "screenshot_1.png"
     file_2 = "screenshot_2.png"
-    raz = int(image_1.percentage_difference(file_1, file_2))
+    raz = image_1.percentage_difference(file_1, file_2)
 
-    if raz >= 1:
+    if raz > 0:
         a1 = Image.open(file_1)
         b1 = Image.open(file_2)
         c = image_1.graphic_difference(a1, b1)
         c.save('333.png')
-        allure.attach.file('333.png', 'Разница в % ' + str(raz) + '%', attachment_type=allure.attachment_type.PNG)
+        allure.attach.file('333.png', 'Разница___' + str(raz) + '%', attachment_type=allure.attachment_type.PNG)
     # assert int(image_1.percentage_difference(file_1, file_2)) == 0
     # allure.attach.file('333.png', attachment_type=allure.attachment_type.PNG)
 
