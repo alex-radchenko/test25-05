@@ -6,6 +6,7 @@ from selenium.webdriver.common.keys import Keys
 from PIL import Image
 import image_1
 
+
 @allure.feature("TEST")
 @allure.title("TEST")
 @pytest.mark.order0
@@ -30,14 +31,15 @@ def test_site_test(browser):
         b1 = Image.open(file_2)
         c = image_1.graphic_difference(a1, b1)
         c.save('333.png')
-        allure.attach.file("333.png", name="uuuuu", attachment_type=allure.attachment_type.PNG)
+        allure.attach.file('333.png', 'Заголовок', attachment_type=allure.attachment_type.PNG)
+        allure.attach('Внути', 'Заголовок', attachment_type=allure.attachment_type.TEXT)
     # assert int(image_1.percentage_difference(file_1, file_2)) == 0
     # allure.attach.file('333.png', attachment_type=allure.attachment_type.PNG)
+
 
 @allure.feature('Title')
 @allure.title("Простой вход через форму login")
 @pytest.mark.order1
-
 def test_site_login_chrome(browser):
     login_at = "radwexe@mail.ru"
     pass_at = "111"
@@ -58,18 +60,16 @@ def test_site_login_chrome(browser):
         a1 = Image.open(file_1)
         b1 = Image.open(file_2)
         c = image_1.graphic_difference(a1, b1)
-        #c.save('333.png')
+        # c.save('333.png')
 
-    #assert int(image_1.percentage_difference(file_1, file_2)) == 0
-    #allure.attach.file('333.png', attachment_type=allure.attachment_type.PNG)
-
+    # assert int(image_1.percentage_difference(file_1, file_2)) == 0
+    # allure.attach.file('333.png', attachment_type=allure.attachment_type.PNG)
 
 
 @allure.feature('Title')
 @allure.title("Создание курса")
 @pytest.mark.order2
 def test_site_create_kurs(browser):
-
     browser.get("https://antitreningi.ru/account/auth?&token=6auklaju4ccqs4vuj4a48vfvoe")
     browser.implicitly_wait(10)
     # Create_cours
@@ -83,6 +83,7 @@ def test_site_create_kurs(browser):
     browser.find_element_by_link_text("Продолжить").click()
     assert browser.find_element_by_xpath("//div[@class='block__bigtitle js-bigtitle']").text == "Название курса"
     browser.find_element_by_xpath("//button[contains(@class,'button js-popup-trigger')]").click()
+
 
 @allure.feature('Title')
 @allure.title("Создание урока - Теория")
@@ -103,6 +104,7 @@ def test_site_create_lesson_theory(browser):
     browser.find_element_by_tag_name('body').send_keys(Keys.END)
     browser.find_element_by_xpath("//span[@class='b-btn button fl-r js-submit']").click()
     browser.find_element_by_xpath("//a[@class='b-btn animate fl-l js-popup-close']").click()
+
 
 @allure.feature('Title')
 @allure.title("Создание урока - Задание - Тип - Текстовый отчет")
@@ -135,6 +137,7 @@ def test_site_create_lesson_task_type_1_text_report(browser):
     browser.find_element_by_xpath("//input[@id='title']").send_keys(
         "Название урока - task_type_1_text_report" + Keys.TAB + Keys.TAB + Keys.TAB + "Пояснение для вопроса task_type_1_text_report")
     browser.find_element_by_xpath("//span[@class='b-btn button fl-r js-submit']").click()
+
 
 @allure.feature('Title')
 @allure.title("Создание урока - Задание - Тип - Заполнение пробелов")
@@ -171,11 +174,11 @@ def test_site_create_lesson_task_type_2_filling_the_gaps(browser):
 
     browser.find_element_by_xpath("//span[@class='b-btn button fl-r js-submit']").click()
 
+
 @allure.feature('Title')
 @allure.title("Создание урока - Задание - Тип - Загрузка файлов")
 @pytest.mark.order6
 def test_site_create_lesson_task_type_3_upload_file(browser):
-
     browser.get("https://antitreningi.ru/account/auth?&token=6auklaju4ccqs4vuj4a48vfvoe")
     # Create_lesson_task
     browser.find_element_by_link_text("Название курса").click()
@@ -205,6 +208,7 @@ def test_site_create_lesson_task_type_3_upload_file(browser):
 
     browser.find_element_by_xpath("//span[@class='b-btn button fl-r js-submit']").click()
 
+
 @allure.feature('Title')
 @allure.title("Создание урока - Задание - Тип - Голосовое сообщение")
 @pytest.mark.order7
@@ -231,7 +235,8 @@ def test_site_create_lesson_task_type_4_upload_voice_message(browser):
     browser.find_element_by_xpath("//a[@class='cke_button cke_button__source cke_button_off']").click()
 
     browser.find_element_by_xpath("//span[@class='js-toggleInput']").click()
-    browser.find_element_by_name("lesson[questions][0][question]").send_keys("Текст вопроса - task_type_4_voice_message")
+    browser.find_element_by_name("lesson[questions][0][question]").send_keys(
+        "Текст вопроса - task_type_4_voice_message")
 
     browser.find_element_by_xpath("//input[@id='title']").send_keys(
         "Название урока - task_type_3_upload_voice_message" + Keys.TAB + Keys.TAB + Keys.TAB + "Пояснение для вопроса task_type_4_upload_voice_message")
@@ -239,8 +244,9 @@ def test_site_create_lesson_task_type_4_upload_voice_message(browser):
     browser.find_element_by_xpath("//span[@class='b-btn button fl-r js-submit']").click()
     time.sleep(3)
 
-#@pytest.mark.order8
-#def test_site_create_lesson_task_type_5_statistics(browser):
+
+# @pytest.mark.order8
+# def test_site_create_lesson_task_type_5_statistics(browser):
 #    assert 2 == 2
 
 #    browser.get("https://antitreningi.ru/account/auth?&token=6auklaju4ccqs4vuj4a48vfvoe")
@@ -265,7 +271,6 @@ def test_site_create_lesson_task_type_4_upload_voice_message(browser):
 #    browser.find_element_by_xpath("//input[@class='js-task-stats-newname']").send_keys("Название показателя")
 
 
-
 @allure.feature('Удаление')
 @allure.title("Удаление всех курсов")
 @pytest.mark.order9
@@ -279,6 +284,7 @@ def test_site_delete_cours(browser):
         browser.find_element_by_xpath(
             "//div[contains(@class,'MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-center MuiGrid-justify-xs-space-between')]//div[1]//div[1]//div[1]//button[1]//span[1]").click()
         time.sleep(3)
+
 
 @allure.feature('Удаление')
 @allure.title("Удаление курсов из корзины")
