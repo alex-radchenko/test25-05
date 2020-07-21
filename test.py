@@ -11,6 +11,9 @@ import image_1
 @allure.title("TEST")
 @pytest.mark.order0
 def test_site_test(browser):
+    """Unicode in description.
+        Это текст
+    """
     allure.step("Водим логин и пароль")
     login_at = "radwexe@mail.ru"
     pass_at = "111"
