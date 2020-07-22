@@ -280,8 +280,8 @@ def test_site_delete_cours(browser):
 
     for sel_del in browser.find_elements_by_xpath(
             "//body//div[@id='courseslist']//div//div[3]//div[1]//div[3]//div[1]//div[2]//div[1]//div[1]//img[1]"):
-
         sel_del.click()
+        time.sleep(3)
         browser.find_element_by_xpath(
             "//div[contains(@class,'MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-center MuiGrid-justify-xs-space-between')]//div[1]//div[1]//div[1]//button[1]//span[1]").click()
         time.sleep(3)

@@ -20,8 +20,6 @@ def browser(request):
             desired_capabilities=capabilities)
         browser.maximize_window()
         browser.implicitly_wait(10)
-        yield browser
-        browser.quit()
     elif selenoid == "mac":
         capabilities = remote_driver.browser
         browser = webdriver.Remote(
@@ -29,9 +27,7 @@ def browser(request):
             desired_capabilities=capabilities)
         browser.maximize_window()
         browser.implicitly_wait(10)
-        yield browser
-        browser.quit()
     else:
-        raise pytest.UsageError("--selenoid_type should be ip_selenoid_mac or ip_selenoid_serv")
+        raise pytest.UsageError("--selenoid should be mac or serv")
     yield browser
     browser.quit()
