@@ -110,10 +110,8 @@ def test_site_create_lesson_task_type_1_text_report(browser):
             "//span[@class='b-btn button button_light button_blank js-description_toggler']"):
         x.click()
 
-    browser.find_element_by_xpath("//textarea[@name='lesson[description]']").send_keys(
-        "Добавить теоретический блок_text")
-    browser.find_element_by_xpath("//textarea[@name='lesson[curator_comment]']").send_keys(
-        "Добавить инструкцию для наставника_text")
+    browser.find_element_by_xpath("//textarea[@name='lesson[description]']").send_keys("Добавить теоретический блок_text")
+    browser.find_element_by_xpath("//textarea[@name='lesson[curator_comment]']").send_keys("Добавить инструкцию для наставника_text")
 
     # Добавить задание
     browser.find_element_by_id("select2-chosen-4").click()
