@@ -10,7 +10,7 @@ def pytest_addoption(parser):
     parser.addoption('--selenoid', action='store', default='mac',
                      help="Choose selenoid type: selenoidserv or selenoidmac")
     parser.addoption('--br_type', action='store', default='chrome',
-                     help="Choose ____ type: br_type or br_type")
+                     help="Choose br_type type: chrome, firefox or opera")
 
 @pytest.fixture(scope="function")
 def browser(request):
@@ -21,7 +21,8 @@ def browser(request):
         capabilities = browsers.firefox
     elif br_type == "opera":
         capabilities = browsers.opera
-
+    else:
+        raise pytest.UsageError("--br_type Choose should be chrome, firefox or opera")
     selenoid = request.config.getoption("selenoid")
     if selenoid == "serv":
         browser = webdriver.Remote(
