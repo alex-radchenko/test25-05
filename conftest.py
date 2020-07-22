@@ -8,7 +8,7 @@ import time
 
 @pytest.fixture(scope="function")
 def browser(request):
-    selenoid_type = request.config.getoption("selenoid type")
+    selenoid_type = request.config.getoption("selenoid_type")
     capabilities = None
     driver = None
     if selenoid_type == "ip_selenoid_serv":
