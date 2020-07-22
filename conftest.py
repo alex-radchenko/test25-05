@@ -8,13 +8,11 @@ import time
 
 def pytest_addoption(parser):
     parser.addoption('--selenoid', action='store', default='selenoidmac',
-                     help="Choose browser: chrome or firefox")
+                     help="Choose selenoid type: selenoidserv or selenoidmac")
 
 @pytest.fixture(scope="function")
 def browser(request):
     selenoid = request.config.getoption("selenoid")
-    capabilities = None
-    browser = None
     if selenoid == "selenoidserv":
         capabilities = remote_driver.browser
         browser = webdriver.Remote(
