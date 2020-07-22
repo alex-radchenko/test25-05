@@ -6,7 +6,7 @@ node {
     }
 
     stage("test") {
-        sh '/usr/local/bin/pipenv run /usr/local/bin/pytest -v --tb=line test.py -sv --alluredir=allure_result'
+        sh '/usr/local/bin/pipenv run /usr/local/bin/pytest -v --selenoid_type=ip_selenoid_serv --tb=line test.py -sv --alluredir=allure_result'
     }
     stage("report") {
         script {
