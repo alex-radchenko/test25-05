@@ -36,7 +36,7 @@ def test_site_test(browser):
         a1 = Image.open(file_1)
         b1 = Image.open(file_2)
         c = image_1.graphic_difference(a1, b1)
-        c.save('3333.png')
+        c.save('333.png')
         allure.attach.file('333.png', 'Разница___' + str(raz) + '%', attachment_type=allure.attachment_type.PNG)
     os.remove("screenshot_1.png")
     # assert int(image_1.percentage_difference(file_1, file_2)) == 0
