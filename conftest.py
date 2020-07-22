@@ -23,6 +23,7 @@ def browser(request):
         capabilities = browsers.opera
     else:
         raise pytest.UsageError("--br_type Choose should be chrome, firefox or opera")
+
     selenoid = request.config.getoption("selenoid")
     if selenoid == "serv":
         browser = webdriver.Remote(
@@ -34,6 +35,7 @@ def browser(request):
             desired_capabilities=capabilities)
     else:
         raise pytest.UsageError("--selenoid should be mac or serv")
+
     browser.maximize_window()
     browser.implicitly_wait(10)
     yield browser
