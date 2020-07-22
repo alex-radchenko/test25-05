@@ -8,10 +8,10 @@ import time
 
 @pytest.fixture(scope="function")
 def browser(request):
-    selenoid_type = request.config.getoption("selenoid_type")
+    selenoid = request.config.getoption("selenoid_type")
     capabilities = None
     driver = None
-    if selenoid_type == "ip_selenoid_serv":
+    if selenoid == "selenoidserv":
         capabilities = remote_driver.browser
         driver = webdriver.Remote(
             command_executor=remote_driver.ip_selenoid_serv,
@@ -20,7 +20,7 @@ def browser(request):
         driver.implicitly_wait(10)
         yield driver
         driver.quit()
-    elif selenoid_type == "ip_selenoid_mac":
+    elif selenoid == "selenoidmac":
         capabilities = remote_driver.browser
         driver = webdriver.Remote(
             command_executor=remote_driver.ip_selenoid_mac,
