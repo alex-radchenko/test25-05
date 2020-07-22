@@ -13,26 +13,26 @@ def pytest_addoption(parser):
 def browser(request):
     selenoid = request.config.getoption("selenoid_type")
     capabilities = None
-    driver = None
+    browser = None
     if selenoid == "selenoidserv":
         capabilities = remote_driver.browser
-        driver = webdriver.Remote(
+        browser = webdriver.Remote(
             command_executor=remote_driver.ip_selenoid_serv,
             desired_capabilities=capabilities)
-        driver.maximize_window()
-        driver.implicitly_wait(10)
-        yield driver
-        driver.quit()
+        browser.maximize_window()
+        browser.implicitly_wait(10)
+        yield browser
+        browser.quit()
     elif selenoid == "selenoidmac":
         capabilities = remote_driver.browser
-        driver = webdriver.Remote(
+        browser = webdriver.Remote(
             command_executor=remote_driver.ip_selenoid_mac,
             desired_capabilities=capabilities)
-        driver.maximize_window()
-        driver.implicitly_wait(10)
-        yield driver
-        driver.quit()
+        browser.maximize_window()
+        browser.implicitly_wait(10)
+        yield browser
+        browser.quit()
     else:
         raise pytest.UsageError("--selenoid_type should be ip_selenoid_mac or ip_selenoid_serv")
     yield browser
-    driver.quit()
+    browser.quit()
