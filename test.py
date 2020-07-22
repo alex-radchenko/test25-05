@@ -7,6 +7,8 @@ from PIL import Image
 import image_1
 import helper
 import os
+import accounts
+import pytest_sugar
 
 @allure.feature("TEST")
 @allure.title("TEST")
@@ -15,13 +17,12 @@ def test_site_test(browser):
     """
         Просто тестовый запуск простого теста
     """
-    login_at = "radwexe@mail.ru"
-    pass_at = "111"
+
     browser.get('https://antitreningi.ru')
     browser.find_element_by_xpath("//li[3]//a[1]").click()
     time.sleep(3)
-    browser.find_element_by_name("email").send_keys(login_at)
-    browser.find_element_by_name("password").send_keys(pass_at)
+    browser.find_element_by_name("email").send_keys(accounts.acc["radwexe"]["login"])
+    browser.find_element_by_name("password").send_keys(accounts.acc["radwexe"]["pas"])
     browser.find_element_by_xpath("//button[@class='btn modal__btn']").click()
     time.sleep(3)
     assert browser.find_element_by_link_text("Создать курс в папке").is_displayed() == True
@@ -46,17 +47,13 @@ def test_site_test(browser):
 @allure.title("Простой вход через форму login")
 @pytest.mark.order1
 def test_site_login_chrome(browser):
-    login_at = "radwexe@mail.ru"
-    pass_at = "111"
 
     browser.get('https://antitreningi.ru')
-
     browser.find_element_by_xpath("//li[3]//a[1]").click()
-    browser.find_element_by_name("email").send_keys(login_at)
-    browser.find_element_by_name("password").send_keys(pass_at)
+    browser.find_element_by_name("email").send_keys(accounts.acc["radwexe"]["login"])
+    browser.find_element_by_name("password").send_keys(accounts.acc["radwexe"]["pas"])
     browser.find_element_by_xpath("//button[@class='btn modal__btn']").click()
     assert browser.find_element_by_link_text("Создать курс в папке").is_displayed() == True
-
 
 @allure.feature('Title')
 @allure.title("Создание курса")
@@ -99,7 +96,7 @@ def test_site_create_lesson_theory(browser):
     browser.find_element_by_tag_name('body').send_keys(Keys.END)
     browser.find_element_by_xpath("//span[@class='b-btn button fl-r js-submit']").click()
     time.sleep(3)
-    browser.find_element_by_xpath("//a[@class='b-btn animate fl-l js-popup-close']").click()
+    #browser.find_element_by_xpath("//a[@class='b-btn animate fl-l js-popup-close']").click()
 
 
 @allure.feature('Title')
