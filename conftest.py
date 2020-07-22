@@ -9,25 +9,31 @@ import time
 def pytest_addoption(parser):
     parser.addoption('--selenoid', action='store', default='mac',
                      help="Choose selenoid type: selenoidserv or selenoidmac")
+    parser.addoption('--br_type', action='store', default='chrome',
+                     help="Choose ____ type: br_type or br_type")
 
 @pytest.fixture(scope="function")
 def browser(request):
+    br_type = request.config.getoption("br_type")
+    if br_type == "chrome":
+        capabilities = browsers.chrome
+    elif br_type == "firefox":
+        capabilities = browsers.firefox
+    elif br_type == "opera":
+        capabilities = browsers.opera
+
     selenoid = request.config.getoption("selenoid")
     if selenoid == "serv":
-        capabilities = remote_driver.browser
         browser = webdriver.Remote(
             command_executor=remote_driver.ip_selenoid_serv,
             desired_capabilities=capabilities)
-        browser.maximize_window()
-        browser.implicitly_wait(10)
     elif selenoid == "mac":
-        capabilities = remote_driver.browser
         browser = webdriver.Remote(
             command_executor=remote_driver.ip_selenoid_mac,
             desired_capabilities=capabilities)
-        browser.maximize_window()
-        browser.implicitly_wait(10)
     else:
         raise pytest.UsageError("--selenoid should be mac or serv")
+    browser.maximize_window()
+    browser.implicitly_wait(10)
     yield browser
     browser.quit()

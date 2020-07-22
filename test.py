@@ -6,6 +6,7 @@ from selenium.webdriver.common.keys import Keys
 from PIL import Image
 import image_1
 import helper
+import os
 
 
 @allure.feature("TEST")
@@ -15,15 +16,15 @@ def test_site_test(browser):
     """
         Просто тестовый запуск простого теста
     """
-    allure.step("Водим логин и пароль")
     login_at = "radwexe@mail.ru"
     pass_at = "111"
     browser.get('https://antitreningi.ru')
-
     browser.find_element_by_xpath("//li[3]//a[1]").click()
+    time.sleep(3)
     browser.find_element_by_name("email").send_keys(login_at)
     browser.find_element_by_name("password").send_keys(pass_at)
     browser.find_element_by_xpath("//button[@class='btn modal__btn']").click()
+    time.sleep(3)
     assert browser.find_element_by_link_text("Создать курс в папке").is_displayed() == True
     browser.save_screenshot('screenshot_1.png')
 
@@ -35,8 +36,9 @@ def test_site_test(browser):
         a1 = Image.open(file_1)
         b1 = Image.open(file_2)
         c = image_1.graphic_difference(a1, b1)
-        c.save('333.png')
+        c.save('3333.png')
         allure.attach.file('333.png', 'Разница___' + str(raz) + '%', attachment_type=allure.attachment_type.PNG)
+    os.remove("screenshot_1.png")
     # assert int(image_1.percentage_difference(file_1, file_2)) == 0
     # allure.attach.file('333.png', attachment_type=allure.attachment_type.PNG)
 
