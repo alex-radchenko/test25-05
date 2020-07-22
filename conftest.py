@@ -11,7 +11,7 @@ def pytest_addoption(parser):
 
 @pytest.fixture(scope="function")
 def browser(request):
-    selenoid = request.config.getoption("selenoid_type")
+    selenoid = request.config.getoption("selenoid")
     capabilities = None
     browser = None
     if selenoid == "selenoidserv":
