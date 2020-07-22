@@ -124,6 +124,7 @@ def test_site_create_lesson_task_type_1_text_report(browser):
 
     browser.find_element_by_xpath("//input[@id='title']").send_keys(
         "Название урока - task_type_1_text_report" + Keys.TAB + Keys.TAB + Keys.TAB + "Пояснение для вопроса task_type_1_text_report")
+    time.sleep(2)
     browser.find_element_by_xpath("//span[@class='b-btn button fl-r js-submit']").click()
 
 
@@ -259,30 +260,31 @@ def test_site_create_lesson_task_type_4_upload_voice_message(browser):
 #    browser.find_element_by_xpath("//input[@class='js-task-stats-newname']").send_keys("Название показателя")
 
 
-@allure.feature('Удаление')
-@allure.title("Удаление всех курсов")
-@pytest.mark.order9
-def test_site_delete_cours(browser):
-    browser.get("https://antitreningi.ru/account/auth?&token=" + helper.token)
-
-    for sel_del in browser.find_elements_by_xpath(
-            "//body//div[@id='courseslist']//div//div[3]//div[1]//div[3]//div[1]//div[2]//div[1]//div[1]//img[1]"):
-        browser.implicitly_wait(10)
-        sel_del.click()
-        browser.find_element_by_xpath(
-            "//div[contains(@class,'MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-center MuiGrid-justify-xs-space-between')]//div[1]//div[1]//div[1]//button[1]//span[1]").click()
-        time.sleep(3)
-
-
-@allure.feature('Удаление')
-@allure.title("Удаление курсов из корзины")
-@pytest.mark.order10
-def test_site_delete_cours_from_basket(browser):
-    browser.get("https://antitreningi.ru/account/auth?&token=" + helper.token)
-
-    for sel_del in browser.find_elements_by_xpath(
-            "//body//div[@id='courseslist']//div//div[3]//div[1]//div[4]//div[1]//div[2]//div[1]//div[1]//img[1]"):
-        browser.implicitly_wait(10)
-        sel_del.click()
-        browser.find_element_by_xpath(
-            "//div[contains(@class,'MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-center MuiGrid-justify-xs-space-between')]//div[1]//div[1]//div[1]//button[1]//span[1]").click()
+#@allure.feature('Удаление')
+#@allure.title("Удаление всех курсов")
+#@pytest.mark.order9
+#def test_site_delete_cours(browser):
+#    browser.get("https://antitreningi.ru/account/auth?&token=" + helper.token)
+#
+#    for sel_del in browser.find_elements_by_xpath(
+#            "//body//div[@id='courseslist']//div//div[3]//div[1]//div[3]//div[1]//div[2]//div[1]//div[1]//img[1]"):
+#        browser.implicitly_wait(10)
+#        sel_del.click()
+#        browser.find_element_by_xpath(
+#            "//div[contains(@class,'MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-center MuiGrid-justify-xs-space-between')]//div[1]//div[1]//div[1]//button[1]//span[1]").click()
+#        time.sleep(3)
+#
+#
+#@allure.feature('Удаление')
+#@allure.title("Удаление курсов из корзины")
+#@pytest.mark.order10
+#def test_site_delete_cours_from_basket(browser):
+#    browser.get("https://antitreningi.ru/account/auth?&token=" + helper.token)
+#
+#    for sel_del in browser.find_elements_by_xpath(
+#            "//body//div[@id='courseslist']//div//div[3]//div[1]//div[4]//div[1]//div[2]//div[1]//div[1]//img[1]"):
+#        browser.implicitly_wait(10)
+#        sel_del.click()
+#        browser.find_element_by_xpath(
+#            "//div[contains(@class,'MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-center MuiGrid-justify-xs-space-between')]//div[1]//div[1]//div[1]//button[1]//span[1]").click()
+#
