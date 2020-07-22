@@ -16,4 +16,3 @@ def browser():
     yield driver
     time.sleep(2)
     driver.quit()
-

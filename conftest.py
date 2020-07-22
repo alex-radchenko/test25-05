@@ -5,8 +5,9 @@ import browsers
 import allure
 import time
 
+
 def pytest_addoption(parser):
-    parser.addoption('--selenoid', action='store', default=None,
+    parser.addoption('--selenoid', action='store', default='selenoidmac',
                      help="Choose browser: chrome or firefox")
 
 @pytest.fixture(scope="function")
