@@ -5,6 +5,7 @@ import pytest
 from selenium.webdriver.common.keys import Keys
 from PIL import Image
 import image_1
+import helper
 
 
 @allure.feature("TEST")
@@ -54,26 +55,12 @@ def test_site_login_chrome(browser):
     browser.find_element_by_name("password").send_keys(pass_at)
     browser.find_element_by_xpath("//button[@class='btn modal__btn']").click()
     assert browser.find_element_by_link_text("Создать курс в папке").is_displayed() == True
-    browser.save_screenshot('screenshot_1.png')
-    file_1 = "screenshot_1.png"
-    file_2 = "screenshot_2.png"
-
-    if int(image_1.percentage_difference(file_1, file_2)) >= 1:
-        print("Большая разница")
-        a1 = Image.open(file_1)
-        b1 = Image.open(file_2)
-        c = image_1.graphic_difference(a1, b1)
-        # c.save('333.png')
-
-    # assert int(image_1.percentage_difference(file_1, file_2)) == 0
-    # allure.attach.file('333.png', attachment_type=allure.attachment_type.PNG)
-
 
 @allure.feature('Title')
 @allure.title("Создание курса")
 @pytest.mark.order2
 def test_site_create_kurs(browser):
-    browser.get("https://antitreningi.ru/account/auth?&token=6auklaju4ccqs4vuj4a48vfvoe")
+    browser.get("https://antitreningi.ru/account/auth?&token=" + helper.token)
     browser.implicitly_wait(10)
     # Create_cours
     browser.find_element_by_link_text("Создать курс в папке").click()
@@ -92,7 +79,7 @@ def test_site_create_kurs(browser):
 @allure.title("Создание урока - Теория")
 @pytest.mark.order3
 def test_site_create_lesson_theory(browser):
-    browser.get("https://antitreningi.ru/account/auth?&token=6auklaju4ccqs4vuj4a48vfvoe")
+    browser.get("https://antitreningi.ru/account/auth?&token=" + helper.token)
     browser.implicitly_wait(10)
     # Create_lesson_theory
 
@@ -113,7 +100,7 @@ def test_site_create_lesson_theory(browser):
 @allure.title("Создание урока - Задание - Тип - Текстовый отчет")
 @pytest.mark.order4
 def test_site_create_lesson_task_type_1_text_report(browser):
-    browser.get("https://antitreningi.ru/account/auth?&token=6auklaju4ccqs4vuj4a48vfvoe")
+    browser.get("https://antitreningi.ru/account/auth?&token=" + helper.token)
     # Create_lesson_task
     browser.find_element_by_link_text("Название курса").click()
     browser.find_element_by_link_text("Уроки").click()
@@ -147,7 +134,7 @@ def test_site_create_lesson_task_type_1_text_report(browser):
 @pytest.mark.order5
 def test_site_create_lesson_task_type_2_filling_the_gaps(browser):
     browser.implicitly_wait(10)
-    browser.get("https://antitreningi.ru/account/auth?&token=6auklaju4ccqs4vuj4a48vfvoe")
+    browser.get("https://antitreningi.ru/account/auth?&token=" + helper.token)
     # Create_lesson_task
     browser.find_element_by_link_text("Название курса").click()
     browser.find_element_by_link_text("Уроки").click()
@@ -182,7 +169,7 @@ def test_site_create_lesson_task_type_2_filling_the_gaps(browser):
 @allure.title("Создание урока - Задание - Тип - Загрузка файлов")
 @pytest.mark.order6
 def test_site_create_lesson_task_type_3_upload_file(browser):
-    browser.get("https://antitreningi.ru/account/auth?&token=6auklaju4ccqs4vuj4a48vfvoe")
+    browser.get("https://antitreningi.ru/account/auth?&token=" + helper.token)
     # Create_lesson_task
     browser.find_element_by_link_text("Название курса").click()
     browser.find_element_by_link_text("Уроки").click()
@@ -216,7 +203,7 @@ def test_site_create_lesson_task_type_3_upload_file(browser):
 @allure.title("Создание урока - Задание - Тип - Голосовое сообщение")
 @pytest.mark.order7
 def test_site_create_lesson_task_type_4_upload_voice_message(browser):
-    browser.get("https://antitreningi.ru/account/auth?&token=6auklaju4ccqs4vuj4a48vfvoe")
+    browser.get("https://antitreningi.ru/account/auth?&token=" + helper.token)
     # Create_lesson_task
     browser.find_element_by_link_text("Название курса").click()
     browser.find_element_by_link_text("Уроки").click()
@@ -278,7 +265,7 @@ def test_site_create_lesson_task_type_4_upload_voice_message(browser):
 @allure.title("Удаление всех курсов")
 @pytest.mark.order9
 def test_site_delete_cours(browser):
-    browser.get("https://antitreningi.ru/account/auth?&token=6auklaju4ccqs4vuj4a48vfvoe")
+    browser.get("https://antitreningi.ru/account/auth?&token=" + helper.token)
 
     for sel_del in browser.find_elements_by_xpath(
             "//body//div[@id='courseslist']//div//div[3]//div[1]//div[3]//div[1]//div[2]//div[1]//div[1]//img[1]"):
@@ -293,7 +280,7 @@ def test_site_delete_cours(browser):
 @allure.title("Удаление курсов из корзины")
 @pytest.mark.order10
 def test_site_delete_cours_from_basket(browser):
-    browser.get("https://antitreningi.ru/account/auth?&token=6auklaju4ccqs4vuj4a48vfvoe")
+    browser.get("https://antitreningi.ru/account/auth?&token=" + helper.token)
 
     for sel_del in browser.find_elements_by_xpath(
             "//body//div[@id='courseslist']//div//div[3]//div[1]//div[4]//div[1]//div[2]//div[1]//div[1]//img[1]"):
