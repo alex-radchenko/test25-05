@@ -8,7 +8,7 @@ import time
 
 def pytest_addoption(parser):
     parser.addoption('--selenoid', action='store', default='mac',
-                     help="Choose selenoid type: selenoidserv or selenoidmac")
+                     help="Choose selenoid type: serv or mac")
     parser.addoption('--br_type', action='store', default='chrome',
                      help="Choose br_type type: chrome, firefox or opera")
 

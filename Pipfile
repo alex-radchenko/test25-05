@@ -12,6 +12,7 @@ lorem = "*"
 allure-pytest = "*"
 pillow = "*"
 pytest-sugar = "*"
+pytest-xdist = "*"
 
 [requires]
 python_version = "3.6"
