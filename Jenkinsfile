@@ -6,7 +6,7 @@ node {
     }
 
     stage("test") {
-        sh '/usr/local/bin/pipenv run /usr/local/bin/pytest -s -v --br_type=chrome --selenoid=serv test.py -sv --alluredir=allure_result'
+        sh '/usr/local/bin/pipenv run /usr/local/bin/pytest -s -v --br_type=chrome --selenoid=serv TestSmokeTesting.py -sv --alluredir=allure_result'
     }
     stage("report") {
         script {
