@@ -4,8 +4,8 @@ import helper
 
 
 class BasePage:
-    def __init__(self, driver):
-        self.driver = driver
+    def __init__(self, browser):
+        self.driver = browser
         self.base_url = "https://antitreningi.ru"
         self.base_url_token = "https://antitreningi.ru/account/auth?&token=" + helper.token
 
