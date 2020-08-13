@@ -6,7 +6,7 @@ chrome = {
     }
 firefox = {
         "browserName": "firefox",
-        "version": "78.0",
+        "version": "79.0",
         "enableVNC": True,
         "enableVideo": False
     }
