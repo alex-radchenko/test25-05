@@ -13,7 +13,6 @@ class MainPageLoginLokators:
     LOCATOR_CHECK_CREATE_COURS = (By.LINK_TEXT, "Создать курс в папке")
 
 
-
 class MainPageHelper(BasePage):
 
     def click_on_the_yellow_button(self):
@@ -23,6 +22,7 @@ class MainPageHelper(BasePage):
         search_field = self.find_element(MainPageLoginLokators.LOCATOR_EMAIL_FIELD)
         search_field.send_keys(email)
         return search_field
+
     def enter_password(self, pas):
         search_field = self.find_element(MainPageLoginLokators.LOCATOR_PASSWORD_FIELD)
         search_field.send_keys(pas)

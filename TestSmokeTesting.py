@@ -1,5 +1,8 @@
 from selenium.webdriver.support.ui import Select
+import sqlite3 as sl
 from selenium.webdriver.common.by import By
+import requests
+import bd_work
 import time
 import allure
 import pytest
@@ -15,63 +18,21 @@ import accounts
 import locators
 from MainPageLogin import MainPageHelper
 
-
 @allure.feature("TEST")
 @allure.title("TEST")
 @pytest.mark.order1
 def test_site_test(browser):
-    browser.get("https://nightly.ckeditor.com/20-07-25-06-04/full/samples/")
-    browser.find_element(By.XPATH, "//iframe[@class='cke_wysiwyg_frame cke_reset']").send_keys("фывафвафывафыва")
-    time.sleep(10)
-#    browser.get("https://antitreningi.ru")
-#    time.sleep(2)
-#    browser.find_element(By.TAG_NAME, "html").send_keys(Keys.PAGE_DOWN)
-#    #browser.find_element(By.TAG_NAME, "html").send_keys(Keys.END)
-#    time.sleep(2)
-#    #max_height
-#    total_width = browser.execute_script("return document.body.offsetWidth")
-#    total_height = browser.execute_script("return document.body.scrollHeight")
-#    browser.set_window_size(total_width, total_height)
-#    time.sleep(2)
-#    browser.save_screenshot("screenshot_1.png")
-#
-#    file_1 = "screenshot_1.png"
-#    file_2 = "screenshot_2.png"
-#    raz = image_1.percentage_difference(file_1, file_2)
-#
-#    if raz > 0:
-#        a1 = Image.open(file_1)
-#        b1 = Image.open(file_2)
-#        c = image_1.graphic_difference(a1, b1)
-#        c.save('different.png')
-#        allure.attach.file('333.png', 'Разница___' + str(raz) + '%', attachment_type=allure.attachment_type.PNG)
-#    #os.remove("screenshot_1.png")
-#
-#
-#    browser.get("https://antitreningi.ru")
-#    browser.find_element(By.XPATH, "//li[3]//a[1]").click()
+    login_at = "radwexe@mail.ru"
+    pass_at = "111"
 
-#    time.sleep(3)
-#    browser.find_element(By.NAME, "email").send_keys(accounts.acc["radwexe"]["login"])
-#    browser.find_element(By.NAME, "password").send_keys(accounts.acc["radwexe"]["pas"])
-#    browser.find_element(By.XPATH, "//button[@class='btn modal__btn']").click()
-#    time.sleep(3)
-#    assert browser.find_element(By.LINK_TEXT, "Создать курс в папке").is_displayed() == True
-#    browser.save_screenshot('screenshot_1.png')
-#
-#    file_1 = "screenshot_1.png"
-#    file_2 = "screenshot_2.png"
-#    raz = image_1.percentage_difference(file_1, file_2)
-#
-#    if raz > 0:
-#        a1 = Image.open(file_1)
-#        b1 = Image.open(file_2)
-#        c = image_1.graphic_difference(a1, b1)
-#        c.save('333.png')
-#        allure.attach.file('333.png', 'Разница___' + str(raz) + '%', attachment_type=allure.attachment_type.PNG)
-#    os.remove("screenshot_1.png")
-#    # assert int(image_1.percentage_difference(file_1, file_2)) == 0
-#    # allure.attach.file('333.png', attachment_type=allure.attachment_type.PNG)
+    browser.get("https://auth.1iu.ru")
+    browser.find_element(By.XPATH, "//input[@name='login']").send_keys('radwexe@mail.ru')
+    browser.find_element(By.XPATH, "//input[@name='password']").send_keys('111')
+    browser.find_element(By.XPATH, "//input[@type='submit']").click()
+    a = browser.find_element(By.XPATH, "//a[contains(text(),'antitreningi.ru')]").get_attribute('href')
+    print(a)
+    with open('helper.py', 'w') as f:
+        f.write('token = "' + a.split('=')[1] + '"')
 
 @allure.feature("Title")
 @allure.title("Простой вход через форму login")
@@ -322,7 +283,11 @@ def test_site_delete_cours(browser):
 @pytest.mark.order11
 def test_site_delete_cours_from_basket(browser):
     browser.get("https://antitreningi.ru/account/auth?&token=" + helper.token)
+    browser.find_element(By.XPATH, "//div[@title='Корзина']").click() if browser.find_element(By.XPATH, "//img[contains(@class, 'svgicon svgicon-courses-expand   ')]").get_attribute("class") == "svgicon svgicon-courses-expand   " else None
     for sel_del in browser.find_elements(By.XPATH, "//div[@title='Удалить курс']"):
         sel_del.click()
         time.sleep(3)
-        browser.find_element(By.XPATH, "//div[contains(@class,'MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-center MuiGrid-justify-xs-space-between')]//div[1]//div[1]//div[1]//button[1]//span[1]").click()
+        browser.find_element(By.XPATH, "//button[@class='MuiButtonBase-root MuiButton-root MuiButton-contained']").click()
+        time.sleep(2)
+        browser.find_element(By.XPATH, "//button[@class='MuiButtonBase-root MuiButton-root MuiButton-contained']").click()
+        time.sleep(2)
