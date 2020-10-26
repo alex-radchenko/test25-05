@@ -3,53 +3,63 @@ from selenium.webdriver.common.by import By
 from BaseApp import BasePage
 import time
 
-#CreateFolderCourseLesson
 
-class CreateFolderLokators:
-    LOCATOR_YELLOW_BUTTON_LOGIN = (By.XPATH, "//li[3]//a[1]")
-    LOCATOR_EMAIL_FIELD = (By.NAME, "email")
-    LOCATOR_PASSWORD_FIELD = (By.NAME, "password")
-    LOCATOR_ENTER_BUTTON = (By.XPATH, "//button[@class='btn modal__btn']")
-    LOCATOR_CHECK_CREATE_COURS = (By.LINK_TEXT, "Создать курс в папке")
-
-class CreateFolderLokators:
-    LOCATOR_YELLOW_BUTTON_LOGIN = (By.XPATH, "//li[3]//a[1]")
+# CreateFolderCourseLesson
 
 class CreateCourseLokators:
-    LOCATOR_YELLOW_BUTTON_LOGIN = (By.XPATH, "//li[3]//a[1]")
+    LOCATOR_CREATE_COURSE_IN_FOLDER_BUTTON = (By.LINK_TEXT, "Создать курс в папке")
+    LOCATOR_NAME_OF_COURSE_FIELD = (By.XPATH, "//input[@id='title']")
+    LOCATOR_DESCRIPTION_OF_COURSE_FIELD_IFRAME = (By.XPATH, "//iframe[@class='cke_wysiwyg_frame cke_reset']")
+    LOCATOR_DESCRIPTION_OF_COURSE_FIELD_IFRAME_FIELD = (By.XPATH, "//body[@class='cke_editable cke_editable_themed cke_contents_ltr cke_show_borders']")
+    LOCATOR_CREATE_COURSE_BUTTON = (By.LINK_TEXT, "Создать курс")
+    LOCATOR_CONTINUE_BUTTON = (By.LINK_TEXT, "Продолжить")
+    LOCATOR_CHECK_CREATE_COURSE = (By.XPATH, "//div[@class='block__bigtitle js-bigtitle']")
 
-class CreateCourseLokators:
-    LOCATOR_YELLOW_BUTTON_LOGIN = (By.XPATH, "//li[3]//a[1]")
 
-class MainPageHelper(BasePage):
+class CreateLessonsLokators:
+    LOCATOR_ADD_LESSON_BUTTON = (By.XPATH, "//button[contains(@class,'button js-popup-trigger')]")
 
-    def click_on_the_yellow_button(self):
-        return self.find_element(MainPageLoginLokators.LOCATOR_YELLOW_BUTTON_LOGIN).click()
 
-    def enter_email(self, email):
-        search_field = self.find_element(MainPageLoginLokators.LOCATOR_EMAIL_FIELD)
-        search_field.send_keys(email)
-        return search_field
+class CreateCourseHelper(BasePage):
 
-    def enter_password(self, pas):
-        search_field = self.find_element(MainPageLoginLokators.LOCATOR_PASSWORD_FIELD)
-        search_field.send_keys(pas)
-        return search_field
+    def click_on_the_create_course_in_folder_button(self):
+        self.find_element(CreateCourseLokators.LOCATOR_CREATE_COURSE_IN_FOLDER_BUTTON).click()
+        time.sleep(3)
 
-    def click_on_the_enter_button(self):
-        return self.find_element(MainPageLoginLokators.LOCATOR_ENTER_BUTTON).click()
+    def enter_name_of_course(self, name_course):
+        search_field = self.find_element(CreateCourseLokators.LOCATOR_NAME_OF_COURSE_FIELD)
+        search_field.send_keys(name_course)
 
-    def full_login(self, acc):
-        login = acc["login"]
-        pas = acc["pass"]
-        self.find_element(MainPageLoginLokators.LOCATOR_YELLOW_BUTTON_LOGIN).click()
-        search_field = self.find_element(MainPageLoginLokators.LOCATOR_EMAIL_FIELD)
-        search_field.send_keys(login)
-        search_field = self.find_element(MainPageLoginLokators.LOCATOR_PASSWORD_FIELD)
-        search_field.send_keys(pas)
-        self.find_element(MainPageLoginLokators.LOCATOR_ENTER_BUTTON).click()
-        return self
+    def enter_description_of_course(self, description_of_course):
+        iframe_box = self.find_element(CreateCourseLokators.LOCATOR_DESCRIPTION_OF_COURSE_FIELD_IFRAME)
+        self.switch_iframe(iframe_box)
+        description_field = self.find_element(CreateCourseLokators.LOCATOR_DESCRIPTION_OF_COURSE_FIELD_IFRAME_FIELD)
+        description_field.send_keys(description_of_course)
+        self.switch_from_iframe()
+
+    def click_on_the_create_course_button(self):
+        self.find_element(CreateCourseLokators.LOCATOR_CREATE_COURSE_BUTTON).click()
+
+    def click_on_the_continue_button(self):
+        self.find_element(CreateCourseLokators.LOCATOR_CONTINUE_BUTTON).click()
 
     def login_check(self):
-        check_el = self.find_element(MainPageLoginLokators.LOCATOR_CHECK_CREATE_COURS)
-        assert check_el.is_displayed() == True
+        check_create_course = self.find_element(CreateCourseLokators.LOCATOR_CHECK_CREATE_COURSE).text
+        return check_create_course
+
+    def full_create_course(self, name_course, description_of_course):
+        self.find_element(CreateCourseLokators.LOCATOR_CREATE_COURSE_IN_FOLDER_BUTTON).click()
+        search_field = self.find_element(CreateCourseLokators.LOCATOR_NAME_OF_COURSE_FIELD)
+        search_field.send_keys(name_course)
+        iframe_box = self.find_element(CreateCourseLokators.LOCATOR_DESCRIPTION_OF_COURSE_FIELD_IFRAME)
+        self.switch_iframe(iframe_box)
+        description_field = self.find_element(CreateCourseLokators.LOCATOR_DESCRIPTION_OF_COURSE_FIELD_IFRAME_FIELD)
+        description_field.send_keys(description_of_course)
+        self.switch_from_iframe()
+        self.find_element(CreateCourseLokators.LOCATOR_CREATE_COURSE_BUTTON).click()
+        self.find_element(CreateCourseLokators.LOCATOR_CONTINUE_BUTTON).click()
+
+
+class CreateCourseAndCreateLessonTheoryHelper(BasePage):
+    def click_on_the_add_lesson_button(self):
+        self.find_element(CreateLessonsLokators.LOCATOR_ADD_LESSON_BUTTON).click()

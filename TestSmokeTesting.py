@@ -16,26 +16,19 @@ import os
 import accounts
 import locators
 from MainPageLogin import MainPageHelper
+from CreateFolderCourseLesson import CreateCourseHelper, CreateCourseAndCreateLessonTheoryHelper
+import save_token
 
 @allure.feature("TEST")
 @allure.title("TEST")
 @pytest.mark.order1
 def test_site_test(browser):
-    login_at = "radwexe@mail.ru"
-    pass_at = "111"
-
-    browser.get("https://auth.1iu.ru")
-    browser.find_element(By.XPATH, "//input[@name='login']").send_keys('radwexe@mail.ru')
-    browser.find_element(By.XPATH, "//input[@name='password']").send_keys('111')
-    browser.find_element(By.XPATH, "//input[@type='submit']").click()
-    a = browser.find_element(By.XPATH, "//a[contains(text(),'antitreningi.ru')]").get_attribute('href')
-    print(a)
-    with open('helper.py', 'w') as f:
-        f.write('token = "' + a.split('=')[1] + '"')
+    assert True
 
 @allure.feature("Title")
 @allure.title("Простой вход через форму login")
 @pytest.mark.order2
+
 def test_site_login_chrome(browser):
     main_page = MainPageHelper(browser)
     main_page.go_to_site()
@@ -45,29 +38,24 @@ def test_site_login_chrome(browser):
 @allure.feature('Title')
 @allure.title("Создание курса")
 @pytest.mark.order3
-def test_site_create_kurs(browser):
-    browser.get("https://antitreningi.ru/account/auth?&token=" + helper.token)
-    # Create_cours
-    browser.find_element(By.LINK_TEXT, "Создать курс в папке").click()
-    browser.find_element(By.XPATH, "//input[@id='title']").send_keys("Название курса")
-    browser.find_element(By.XPATH, "//div[@class='diary-settings__descr__wrap']//span[2]").click()
-    browser.find_element(By.XPATH, "//textarea[@class='js-editor js-description-field js-editor-newformats']").send_keys(
-        "Описание курса")
-    browser.find_element(By.LINK_TEXT, "Создать курс").click()
-    browser.find_element(By.LINK_TEXT, "Продолжить").click()
-    assert browser.find_element(By.XPATH, "//div[@class='block__bigtitle js-bigtitle']").text == "Название курса"
-    time.sleep(3)
-    browser.find_element(By.XPATH, "//button[contains(@class,'button js-popup-trigger')]").click()
-
+def test_site_create_course(browser):
+    create_course_page = CreateCourseHelper(browser)
+    create_course_page.go_to_site_through_token()
+    create_course_page.click_on_the_create_course_in_folder_button()
+    create_course_page.enter_name_of_course("test_site_create_course")
+    create_course_page.enter_description_of_course(create_course_page.enter_description_of_course.__name__)
+    create_course_page.click_on_the_create_course_button()
+    create_course_page.click_on_the_continue_button()
+    assert create_course_page.login_check() == test_site_create_course.__name__
 
 @allure.feature('Title')
 @allure.title("Создание урока - Теория")
 @pytest.mark.order4
 def test_site_create_lesson_theory(browser):
-    browser.get("https://antitreningi.ru/account/auth?&token=" + helper.token)
+    browser.get("https://antitreningi.ru/account/auth?&token=" + save_token.token())
     # Create_lesson_theory
 
-    browser.find_element(By.LINK_TEXT, "Название курса").click()
+    browser.find_element(By.LINK_TEXT, test_site_create_course.__name__).click()
 
     browser.find_element(By.LINK_TEXT, "Уроки").click()
     time.sleep(2)
@@ -81,18 +69,16 @@ def test_site_create_lesson_theory(browser):
     browser.find_element(By.XPATH, "//textarea[contains(@class,'js-editor js-description-field')]").send_keys(
         "Описание урока")
     browser.find_element(By.TAG_NAME, "body").send_keys(Keys.END)
-    browser.find_element(By.XPATH, "//span[@class='b-btn button fl-r js-submit']").click()
     time.sleep(3)
-    #browser.find_element(By.XPATH, "//a[@class='b-btn animate fl-l js-popup-close']").click()
-
+    browser.find_element(By.XPATH, "//span[@class='b-btn button fl-r js-submit']").click()
 
 @allure.feature('Title')
 @allure.title("Создание урока - Задание - Тип - Текстовый отчет")
 @pytest.mark.order5
 def test_site_create_lesson_task_type_1_text_report(browser):
-    browser.get("https://antitreningi.ru/account/auth?&token=" + helper.token)
+    browser.get("https://antitreningi.ru/account/auth?&token=" + save_token.token())
     # Create_lesson_task
-    browser.find_element(By.LINK_TEXT, "Название курса").click()
+    browser.find_element(By.LINK_TEXT, test_site_create_course.__name__).click()
     browser.find_element(By.LINK_TEXT, "Уроки").click()
     browser.find_element(By.XPATH, "//button[contains(@class,'button js-popup-trigger')]").click()
     time.sleep(3)
@@ -137,9 +123,9 @@ def test_site_create_lesson_task_type_1_text_report(browser):
 @allure.title("Создание урока - Задание - Тип - Заполнение пробелов")
 @pytest.mark.order6
 def test_site_create_lesson_task_type_2_filling_the_gaps(browser):
-    browser.get("https://antitreningi.ru/account/auth?&token=" + helper.token)
+    browser.get("https://antitreningi.ru/account/auth?&token=" + save_token.token())
     # Create_lesson_task
-    browser.find_element(By.LINK_TEXT, "Название курса").click()
+    browser.find_element(By.LINK_TEXT, test_site_create_course.__name__).click()
     browser.find_element(By.LINK_TEXT, "Уроки").click()
     browser.find_element(By.XPATH, "//button[@class='button js-popup-trigger']").click()
     time.sleep(2)
@@ -172,9 +158,9 @@ def test_site_create_lesson_task_type_2_filling_the_gaps(browser):
 @allure.title("Создание урока - Задание - Тип - Загрузка файлов")
 @pytest.mark.order7
 def test_site_create_lesson_task_type_3_upload_file(browser):
-    browser.get("https://antitreningi.ru/account/auth?&token=" + helper.token)
+    browser.get("https://antitreningi.ru/account/auth?&token=" + save_token.token())
     # Create_lesson_task
-    browser.find_element(By.LINK_TEXT, "Название курса").click()
+    browser.find_element(By.LINK_TEXT, test_site_create_course.__name__).click()
     browser.find_element(By.LINK_TEXT, "Уроки").click()
     browser.find_element(By.XPATH, "//button[contains(@class,'button js-popup-trigger')]").click()
     time.sleep(2)
@@ -206,9 +192,9 @@ def test_site_create_lesson_task_type_3_upload_file(browser):
 @allure.title("Создание урока - Задание - Тип - Голосовое сообщение")
 @pytest.mark.order8
 def test_site_create_lesson_task_type_4_upload_voice_message(browser):
-    browser.get("https://antitreningi.ru/account/auth?&token=" + helper.token)
+    browser.get("https://antitreningi.ru/account/auth?&token=" + save_token.token())
     # Create_lesson_task
-    browser.find_element(By.LINK_TEXT, "Название курса").click()
+    browser.find_element(By.LINK_TEXT, test_site_create_course.__name__).click()
     browser.find_element(By.LINK_TEXT, "Уроки").click()
     browser.find_element(By.XPATH, "//button[contains(@class,'button js-popup-trigger')]").click()
     time.sleep(2)
@@ -267,26 +253,29 @@ def test_site_create_lesson_task_type_4_upload_voice_message(browser):
 @allure.title("Удаление всех курсов")
 @pytest.mark.order10
 def test_site_delete_cours(browser):
-    browser.get("https://antitreningi.ru/account/auth?&token=" + helper.token)
+    browser.get("https://antitreningi.ru/account/auth?&token=" + save_token.token())
+    browser.find_element(By.XPATH,"(//*[contains(@title, 'Удалить курс')])[1]").click()
+    browser.find_element(By.XPATH,
+                "//div[contains(@class,'MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-center MuiGrid-justify-xs-space-between')]//div[1]//div[1]//div[1]//button[1]").click()
+    time.sleep(1)
 
-    for sel_del in browser.find_elements(By.XPATH, "//body//div[@id='courseslist']//div//div[3]//div[1]//div[3]//div[1]//div[2]//div[1]//div[1]//img[1]"):
-        sel_del.click()
-        time.sleep(3)
-        browser.find_element(By.XPATH,
-            "//div[contains(@class,'MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-center MuiGrid-justify-xs-space-between')]//div[1]//div[1]//div[1]//button[1]//span[1]").click()
-        time.sleep(3)
+#
+#    for sel_del in browser.find_elements(By.XPATH, "//div[contains(@class,'MuiBox-root jss133 styles--courseParamsLinkWrap__2eR7X jss118')]//img[contains(@class,'')]"):
+#        sel_del.click()
+#        time.sleep(3)
+#        browser.find_element(By.XPATH,
+#            "//div[contains(@class,'MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-center MuiGrid-justify-xs-space-between')]//div[1]//div[1]//div[1]//button[1]").click()
+#        time.sleep(1)
 
 
-@allure.feature('Удаление')
-@allure.title("Удаление курсов из корзины")
-@pytest.mark.order11
-def test_site_delete_cours_from_basket(browser):
-    browser.get("https://antitreningi.ru/account/auth?&token=" + helper.token)
-    browser.find_element(By.XPATH, "//div[@title='Корзина']").click() if browser.find_element(By.XPATH, "//img[contains(@class, 'svgicon svgicon-courses-expand   ')]").get_attribute("class") == "svgicon svgicon-courses-expand   " else None
-    for sel_del in browser.find_elements(By.XPATH, "//div[@title='Удалить курс']"):
-        sel_del.click()
-        time.sleep(3)
-        browser.find_element(By.XPATH, "//button[@class='MuiButtonBase-root MuiButton-root MuiButton-contained']").click()
-        time.sleep(2)
-        browser.find_element(By.XPATH, "//button[@class='MuiButtonBase-root MuiButton-root MuiButton-contained']").click()
-        time.sleep(2)
+#@allure.feature('Удаление')
+#@allure.title("Удаление курсов из корзины")
+#@pytest.mark.order11
+#def test_site_delete_cours_from_basket(browser):
+#    browser.get("https://antitreningi.ru/account/auth?&token=" + save_token.token())
+#    browser.find_element(By.XPATH, "//div[@title='Корзина']").click() if browser.find_element(By.XPATH, "//img[contains(@class, 'svgicon svgicon-courses-expand   ')]").get_attribute("class") == "svgicon svgicon-courses-expand   " else None
+#    for sel_del in browser.find_elements(By.XPATH, "//div[@title='Удалить курс']"):
+#        sel_del.click()
+#        time.sleep(3)
+#        browser.find_element(By.XPATH, "//button[@class='MuiButtonBase-root MuiButton-root MuiButton-contained']").click()
+#        time.sleep(2)

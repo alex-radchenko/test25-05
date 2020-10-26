@@ -9,7 +9,7 @@ class MainPageLoginLokators:
     LOCATOR_YELLOW_BUTTON_LOGIN = (By.XPATH, "//li[3]//a[1]")
     LOCATOR_EMAIL_FIELD = (By.NAME, "email")
     LOCATOR_PASSWORD_FIELD = (By.NAME, "password")
-    LOCATOR_ENTER_BUTTON = (By.XPATH, "//button[@class='btn modal__btn']")
+    LOCATOR_ENTER_BUTTON = (By.XPATH, "(//button[@type='submit'])[2]")
     LOCATOR_CHECK_CREATE_COURS = (By.LINK_TEXT, "Создать курс в папке")
 
 
@@ -39,6 +39,7 @@ class MainPageHelper(BasePage):
         search_field.send_keys(login)
         search_field = self.find_element(MainPageLoginLokators.LOCATOR_PASSWORD_FIELD)
         search_field.send_keys(pas)
+        time.sleep(5)
         self.find_element(MainPageLoginLokators.LOCATOR_ENTER_BUTTON).click()
         return self
 

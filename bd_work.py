@@ -1,2 +1,2 @@
 import sqlite3
-con = sqlite3.connect('my-test.db')
+hhh = sqlite3.connect("my_test.db")
